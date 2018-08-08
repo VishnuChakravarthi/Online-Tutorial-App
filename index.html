@@ -1,0 +1,48 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>My Export</title>
+    <base href="/Online/" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<link rel="stylesheet" href="lib/jquery-ui.css">
+    <link rel="stylesheet" href="lib/w3.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="lib/dropzone/dist/min/dropzone.min.css" />
+
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Indie+Flower|Kaushan+Script|Lato|Lobster|Pacifico|Tangerine|Yellowtail|Righteous|Cookie|Courgette|Damion|Great+Vibes|Kalam|Niconne|Sacramento|Satisfy" rel="stylesheet">
+
+     
+	<script src="lib/jquery/dist/jquery.js"></script>   
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.js"></script>
+    <script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-touch/angular-touch.js"></script>
+    <script src="lib/jquery-ui/jquery-ui.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/dropzone/dist/dropzone.js"></script>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/common/config.js"></script> 
+    <script src="scripts/common/controllers/navbar.js"></script>
+    <script src="scripts/common/controllers/footer.js"></script>
+    <script src="scripts/main/directives/directive.js"></script>
+    <script src="scripts/main/services/factory.js"></script>
+    <script src="scripts/main/controllers/home.js"></script>
+    <script src="scripts/main/controllers/topic.js"></script>
+</head>
+<body ng-app="myExportApp">   
+    <div ng-include="'views/header.html'"></div>
+    <div ng-view="" autoscroll="true"></div>
+    <!-- <div ng-include="'views/footer.html'"></div> -->
+</body>
+
+
+</html>
