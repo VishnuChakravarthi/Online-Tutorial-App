@@ -1,0 +1,325 @@
+<div ng-controller="QuestionCtrlr" class="" ng-init="quesInit()">
+	<div class="col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px"></div> 
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 font_size_20 subscribe_box border_1px" id="sticky_new">
+		<div ng-include="'views/navigator.html'"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="sticky_anchor"></div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10 margin_bottom_100">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_leftpane border_1px">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_bold font_white font_size_26 margin_bottom_10 text_underline">LIST OF TOPICS</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px" ng-click="showQuestiontab()"><span class="font_black  fas fa-thumbtack"></span>  DIMENSION AND MEASUREMENT</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  VECTORS</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-I</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-II</div>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-8 bg_009688 border_rad_5 border_1px">
+			<div >
+				<h3 class="text-center text_underline">Question Management Page</h3>
+				<div ng-hide="showQuesTab1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_30 text-center font_white "> Click a topic to view questions</div>
+
+ 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center margin_bottom_10 border_1px">
+					<button ng-show="createQuesBtn" ng-click="createQues()" class = "sub_btn border_none font_size_20">Create Question</button>
+				</div>
+				<div ng-show="showQuesTab" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white">
+					<!-- <h4>Student Details</h4> -->
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Topic Name</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_size_20 font_white border_1px">
+							DIMENSION AND MEASUREMENT
+						<!-- <label>Choose an Activity</label> -->
+					<!-- </div> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Difficulty</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<select id="selectDiff" ng-change="showQuestions()" ng-model="select" class="red-text">
+								<option value="0" disabled selected>Select difficulty</option>
+								<option value="1">Easy</option>
+								<option value="2">Medium</option>
+								<option value="3">Hard</option>
+								<option value="4">Master Class</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10 ques_wrap">
+								Ques 1 : When a pipe with diameter 10 cm will Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat. 
+
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+								<button data-target="modal1" ng-click="viewQues()" class="btn modal-trigger">View/Edit</button>
+									
+								<div id="modal1" class="modal">
+								    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 modal-content font_black font_size_30">
+								      <h4>View/Edit Question</h4>
+								      <p ng-hide="editQues">Ques 1 : When a pipe with diameter 10 cm will Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat
+								      	<ul ng-hide="editQues">
+							      			<li>a. First<li>
+							      			<li>b. second<li>
+							      			<li class = "font_red">c. Third<li>
+							      			<li>d. fourth<li>
+								      	</ul>
+								      </p>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10  modal_editques font_white" ng-show="editQues">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Topic Name</div>
+											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white font_size_20 border_1px">
+							<!-- <div class="input-field col s12"> -->
+											DIMENSION AND MEASUREMENT
+						<!-- <label>Choose an Activity</label> -->
+					<!-- </div> -->
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Question</div>
+											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+												<textarea id="textarea1" class="ques_txtarea"></textarea>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Images</div>
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
+												<form multiple class="dropzone" drop-zone="" id="my-dropzone" class="font_black"></form>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Difficulty</div>
+											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+												<select id="selectedLevel" ng-model="select" class="red-text">
+													<option value="0" disabled selected>Select difficulty</option>
+													<option value="1">Easy</option>
+													<option value="2">Medium</option>
+													<option value="3">Hard</option>
+													<option value="4">Master Class</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+											<span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20">Options :</span>
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+													<input id="first_name " type="text" class="validate">
+						          					<label for="first_name" class="pad_left_15">Option 1</label>
+												</div>
+												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+													<input id="first_name " type="text" class="validate">
+						          					<label for="first_name" class="pad_left_15">Option 2</label>
+												</div>
+												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+													<input id="first_name " type="text" class="validate">
+						          					<label for="first_name" class="pad_left_15">Option 3</label>
+												</div>
+												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+													<input id="first_name " type="text" class="validate">
+						          					<label for="first_name" class="pad_left_15">Option 4</label>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Correct Option</div>
+											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+												<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+													<label>
+												        <input class="with-gap font_white" name="group1" type="radio"  />
+												        <span class="font_white">Option 1</span>
+												     </label>
+												</div>
+												<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+													<label>
+												        <input class="with-gap font_white" name="group1" type="radio"  />
+												        <span class="font_white">Option 2</span>
+												     </label>
+												</div>
+												<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+													<label>
+												        <input class="with-gap font_white" name="group1" type="radio"  />
+												        <span class="font_white">Option 3</span>
+												     </label>
+												</div>
+												<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+													<label>
+												        <input class="with-gap font_white" name="group1" type="radio"  />
+												        <span class="font_white">Option 4</span>
+												     </label>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Explanation</div>
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
+												<form multiple class="dropzone" drop-zone="" id="my-dropzone1" class="font_black"></form>
+											</div>
+										</div>
+									</div>
+								    </div>
+								    <div class="modal-footer">
+								    	<a href="" ng-click="closeQues()" class="modal-close waves-effect waves-green btn-flat">Close</a>
+								    	<a href="" ng-hide="editQues" ng-click="editQuestion()" class="waves-effect waves-green btn-flat">Edit</a>
+								    	<a href="" ng-show="editQues" ng-click="updateQues()" class="waves-effect waves-green btn-flat">Update</a>
+								      	
+								    </div>
+								  </div>
+
+								 
+								<!-- <button ng-click="viewQues()">Read More>></button> -->
+								<!-- <div id="myModal" class="modal fade" role="dialog"> -->
+								   <!-- <div class="modal-dialog"> -->
+
+								    <!-- Modal content -->
+								    <!-- <div class="modal-content">
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal">&times;</button>
+								        <h4 class="modal-title">Modal Header</h4>
+								      </div>
+								      <div class="modal-body">
+								        <p>Some text in the modal.</p>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								      </div>
+								    </div>
+
+								  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border_1px"></div> -->
+					<!-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center margin_bottom_10 border_1px">
+						<button ng-click="activate = !activate" class = "width_60p border_none border_rad_10 font_size_20 pad_0 font_black">
+							<div ng-if="!activate" class="button btn-info" ng-click="activateStudent()">Activate</div>
+							<div ng-if="activate" class="button btn-danger" ng-click="deactivateStudent()">Deactivate</div>
+						</button>
+
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div ng-hide="createQuesBtn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center margin_bottom_10 border_1px">
+		<span class="font_size_20 font_white">Or</span>
+	</div> -->
+	<div ng-show="createQuesTab" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white">
+					<!-- <h4>Student Details</h4> -->
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px ">Topic Name</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white font_size_20 border_1px">
+							<!-- <div class="input-field col s12"> -->
+							DIMENSION AND MEASUREMENT
+						<!-- <label>Choose an Activity</label> -->
+					<!-- </div> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Question</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<textarea id="textarea1" class="ques_txtarea"></textarea>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Images</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
+							<form multiple class="dropzone" drop-zone="" id="my-dropzone" class="font_black"></form>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Difficulty</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<select id="selectedLevel" ng-model="select" class="red-text">
+								<option value="0" disabled selected>Select difficulty</option>
+								<option value="1">Easy</option>
+								<option value="2">Medium</option>
+								<option value="3">Hard</option>
+								<option value="4">Master Class</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20">Options :</span>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+							<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+								<input id="first_name " type="text" class="validate">
+	          					<label for="first_name" class="pad_left_15">Option 1</label>
+							</div>
+							<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+								<input id="first_name " type="text" class="validate">
+	          					<label for="first_name" class="pad_left_15">Option 2</label>
+							</div>
+							<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+								<input id="first_name " type="text" class="validate">
+	          					<label for="first_name" class="pad_left_15">Option 3</label>
+							</div>
+							<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+								<input id="first_name " type="text" class="validate">
+	          					<label for="first_name" class="pad_left_15">Option 4</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Correct Option</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+								<label>
+							        <input class="with-gap font_white" name="group1" type="radio"  />
+							        <span class="font_white">Green</span>
+							     </label>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+								<label>
+							        <input class="with-gap font_white" name="group1" type="radio"  />
+							        <span class="font_white">Green</span>
+							     </label>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+								<label>
+							        <input class="with-gap font_white" name="group1" type="radio"  />
+							        <span class="font_white">Green</span>
+							     </label>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+								<label>
+							        <input class="with-gap font_white" name="group1" type="radio"  />
+							        <span class="font_white">Green</span>
+							     </label>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Explanation</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
+							<form multiple class="dropzone" drop-zone="" id="my-dropzone1" class="font_black"></form>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<button class="sub_btn" id="">Cancel</button>
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<button class="sub_btn" id="" ng-click="reset()">Reset</button>
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<button class="sub_btn" id="submit-all">Create Question</button>
+						</div>
+						
+					</div>
+				</div>
+</div>
+
+<script type="text/javascript">
+	 // $(document).ready(function(){
+  //   // $('.modal').modal();
+  // });
+</script>
+<!-- <script src="lib/materialize/materialize.min.js"></script> -->

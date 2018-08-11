@@ -20,21 +20,21 @@ var app = angular.module("myExportApp", [
               templateUrl: 'views/topic.html', 
               controller:'TopicCtrlr' 
             })
-            .when("/productDetail", {
-              templateUrl: 'views/productDet.html', 
-              controller:'ProductDetCtrlr'
+            .when("/question", {
+              templateUrl: 'views/question.html', 
+              controller:'QuestionCtrlr'
+            })
+            .when("/student", {
+              templateUrl: 'views/studentDet.html',
+              controller:'StudentDetailCtrlr'
+            })
+            .when("/test", {
+              templateUrl: 'views/studentTest.html',
+              controller:'StudentTestCtrlr'
             })
             .when("/admin", {
               templateUrl: 'views/admin.html',
               controller:'AdminLoginCtrlr'
-            })
-            .when("/adminAddProduct", {
-              templateUrl: 'views/adminAddProduct.html',
-              controller:'AdminAddProductCtrlr'
-            })
-            .when("/adminViewProduct", {
-              templateUrl: 'views/adminViewProduct.html',
-              controller:'AdminViewProductCtrlr'
             })
 
              .otherwise({ 

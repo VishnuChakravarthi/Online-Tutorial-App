@@ -24,14 +24,11 @@ $(function() {
     sticky_relocate();
 });
 
-$scope.product = function(){
-	$location.path("/product");
-    $log.debug("right");
+// $scope.product = function(){
+// 	$location.path("/product");
+//     $log.debug("right");
 	
-}
- $scope.viewTopic = function(){
-      $location.path("/topic");
-      console.log("asdf");
-    }
+// }
+ 
     
   }])

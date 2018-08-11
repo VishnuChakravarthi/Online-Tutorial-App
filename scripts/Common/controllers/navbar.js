@@ -34,5 +34,9 @@ $(function() {
     sticky_relocate();
 });
 
+$scope.signOut = function(){
+        $location.path("/admin");
+        }
+
 
   }])

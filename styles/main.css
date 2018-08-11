@@ -1,5 +1,5 @@
 .bgimg_home{
-	background: url('../images/bg3.jpg');
+	background: url('../images/bg5.jpg');
 	background-size: cover;
 	background-attachment: fixed;
 }
@@ -100,7 +100,7 @@
 
 .footer{
    /*background-color: orange;*/
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     /*height: 100px;*/
@@ -213,3 +213,153 @@
     color: white;
     cursor: pointer;
 }
+
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0 0 20px 0;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: all 0.3s;
+    }
+
+
+input.validate:not([type]) + label,
+input.validate[type="text"] + label, 
+input.validate[type="password"] + label, 
+input.validate[type="email"] + label, 
+input.validate[type="url"] + label, 
+input.validate[type="time"] + label, 
+input.validate[type="date"] + label, 
+input.validate[type="datetime"] + label, 
+input.validate[type="datetime-local"] + label, 
+input.validate[type="tel"] + label, 
+input.validate[type="number"] + label, 
+input.validate[type="search"] + label, 
+textarea.materialize-textarea.validate + label,
+.input-field label{
+    color : white !important;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
+  border-bottom:1px solid white !important;
+  box-shadow:0 1px 0 0 white !important;
+  /*color: white !important;*/
+}
+
+.button{
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.stud_leftpane{
+  background: #94aaea;
+    border-radius: 5px;
+}
+
+.datepicker-modal {
+    /*max-width: 325px;*/
+    min-width: 300px;
+    max-height: 345px !important;
+}
+
+.ques_wrap {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.ques_txtarea{
+  height: 100px;
+  outline: white;
+  color: black;
+  font-size: 16px;
+}
+
+.ques_txtarea:focus{
+  background-color: white;
+}
+
+.dropzone{
+  color: black;
+}
+
+.dropzone .dz-preview .dz-image {
+    z-index: 0 !important;
+  }
+
+.dropzone:hover .dz-preview:hover .dz-image:hover {
+    z-index: 0 !important;
+  }
+
+  .dropzone .dz-preview .dz-details {
+    z-index: 10000;
+  }
+
+  [type="radio"]:checked+span:after, 
+  [type="radio"].with-gap:checked+span:after {
+    background-color: white !important;
+}
+
+[type="radio"]:checked+span:after, 
+[type="radio"].with-gap:checked+span:before, 
+[type="radio"].with-gap:checked+span:after {
+    border: 2px solid white !important;
+}
+
+#modal1 {
+    /*display: none;*/
+    top: 10% !important;
+    max-height: 80% !important;
+    width: 80% !important;
+}
+
+.modal_editques{
+  background: #42b58b;
+    border-radius: 10px;
+    padding-top: 30px;
+}
+
+.info_box{
+      top: 40px;
+    background: #5885ab;
+    text-align: left;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+/*.modal{
+  padding-right: 0px !important;
+}
+
+.modal-dialog {
+     width: 100% !important; 
+     margin: 0px !important; 
+}
+
+.modal-content{
+     height: 100% !important;
+}*/

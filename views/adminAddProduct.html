@@ -1,0 +1,78 @@
+<div ng-controller="AdminAddProductCtrlr"  class="  w3-container pad_0 margin_top_40" ng-init="">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="sticky_anchor"></div>
+
+	<div class="container">
+		<div class="row well">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20 pad_10 font_white bg_FB6542 font_size_20 border_1px">Product Details</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20 text-center font_size_20 display_table border_1px">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">Product Type</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display_cell">:</div>
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">
+					  <select class="" ng-model="product_type">
+					    <option>TShirt</option>
+					    <!-- <option>2</option>
+					    <option>3</option>
+					    <option>4</option> -->
+					  </select>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20 text-center font_size_20 display_table border_1px">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">Product Name</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display_cell">:</div>
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">
+					<input class="sub_input" type="text" name="name" ng-model="product_name" placeholder="Name of product">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20 text-center font_size_20 display_table border_1px">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">Sizes Available</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display_cell">:</div>
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">
+					<input class="sub_input" type="text" name="size" ng-model="product_size" placeholder="Sizes of product">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20 text-center font_size_20 display_table border_1px">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">Colours available</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display_cell">:</div>
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">
+					<input class="sub_input" type="text" name="color" ng-model="product_color" placeholder="Colors of product">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20 text-center font_size_20 display_table border_1px">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">Material</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display_cell">:</div>
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">
+					<input class="sub_input" type="text" name="material" ng-model="product_material" placeholder="Product material">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20 text-center font_size_20 display_table border_1px">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">Price</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display_cell">:</div>
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">
+					<input class="sub_input" type="text" name="material" ng-model="product_price" placeholder="Product price">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20 text-center font_size_20 display_table border_1px">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">Description</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display_cell">:</div>
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell">
+					<textarea class="sub_input" name="desc" ng-model="product_desc" placeholder="Info about product"></textarea>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20 pad_10 font_white bg_FB6542 font_size_20 border_1px">Upload Images</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
+				<form multiple class="dropzone" drop-zone="" id="my-dropzone"></form>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right font_size_20 display_table border_1px">
+    			<button class="sub_btn" id="submit-all">Upload Product</button>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right font_size_20 display_table border_1px">
+    			<button class="sub_btn" ng-click="addNew()">Add New Product</button>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right font_size_20 display_table border_1px">
+    			<button class="sub_btn" ng-click="viewAllProducts()">View Uploaded Product</button>
+			</div>
+
+		</div>
+	</div>
+	
+</div>

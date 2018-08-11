@@ -4,6 +4,10 @@ app.controller('TopicCtrlr',['$scope','$rootScope','$log','$http','$window','$co
   function ($scope,$rootScope,$log,$http,$window,$controller,$location,$route,localStorageService) {
 
   	$scope.topicInit = function(){
+      $('.modal').modal({ dismissible: false});
+      $("#slide-out").sidenav();
+      $("#selectedtpc").formSelect();
+      $("#selectedDocType").formSelect();
   		// $scope.type = 'topics';
     //   var postData = {
     //     'action' : 'getFile',
@@ -38,6 +42,42 @@ app.controller('TopicCtrlr',['$scope','$rootScope','$log','$http','$window','$co
   $scope.viewHome = function(){
       $location.path("/home");
       console.log("asdf");
+    }
+
+$scope.editTopicContent = function(){
+       
+       // console.log("edit");
+       $scope.editContent = true;
+    }
+
+    $scope.createTopic = function(){
+      $scope.viewTopic = false;
+      $scope.createTopicBtn = false;
+      $scope.showTopicTab1 = true;
+      $scope.createTopicTab = true;
+    }
+
+    $scope.showTopictab = function(){
+      $scope.createTopicBtn = false;
+      $scope.viewTopic = true;
+      $scope.showTopicTab1 = true;
+      $scope.createTopicTab = false;
+    };
+
+    $scope.showUploadZone = function(){
+
+      $scope.drop = true;
+    }
+
+    $scope.cancelTopic = function(){
+      $scope.createTopicBtn = false;
+      $scope.viewTopic = false;
+      $scope.showTopicTab1 = false;
+      $scope.createTopicTab = false;
+      // $scope.viewTopic = false;
+      // $scope.createTopicBtn = false;
+      // $scope.showTopicTab1 = true;
+      // $scope.createTopicTab = true;
     }
 
   }])

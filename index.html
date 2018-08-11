@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>My Export</title>
+    <title>Online Tutorial</title>
     <base href="/Online/" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 	<link rel="stylesheet" href="lib/jquery-ui.css">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Indie+Flower|Kaushan+Script|Lato|Lobster|Pacifico|Tangerine|Yellowtail|Righteous|Cookie|Courgette|Damion|Great+Vibes|Kalam|Niconne|Sacramento|Satisfy" rel="stylesheet">
+    <link rel="stylesheet" href="lib/materialize.min.css">
 
      
 	<script src="lib/jquery/dist/jquery.js"></script>   
@@ -28,6 +29,14 @@
     <script src="lib/jquery-ui/jquery-ui.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="lib/dropzone/dist/dropzone.js"></script>
+    <!-- // <script src="lib/materialize/materialize.min.js"></script> -->
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+            
 
     <script src="scripts/app.js"></script>
     <script src="scripts/common/config.js"></script> 
@@ -37,11 +46,16 @@
     <script src="scripts/main/services/factory.js"></script>
     <script src="scripts/main/controllers/home.js"></script>
     <script src="scripts/main/controllers/topic.js"></script>
+    <script src="scripts/main/controllers/navigate.js"></script>
+    <script src="scripts/main/controllers/studentDet.js"></script>
+    <script src="scripts/main/controllers/studentTest.js"></script>
+    <script src="scripts/main/controllers/question.js"></script>
+   <script src="scripts/main/controllers/adminLogin.js"></script>
 </head>
-<body ng-app="myExportApp">   
+<body ng-app="myExportApp" class="bg_home_solid">   
     <div ng-include="'views/header.html'"></div>
     <div ng-view="" autoscroll="true"></div>
-    <!-- <div ng-include="'views/footer.html'"></div> -->
+    <div ng-include="'views/footer1.html'"></div>
 </body>
 
 

@@ -1,0 +1,108 @@
+<div ng-controller="AdminViewProductCtrlr"  class="  w3-container pad_0 margin_top_40 border_1px" ng-init="adminViewProdInit()">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="sticky_anchor"></div>
+
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well margin_bottom_40 border_1px" ng-repeat = "products in arr">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 border_1px" ng-if="!editMode">
+			 <!-- style="background:url({{products.file}})" -->
+			<img class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-src="{{products.path}}" height="60%" width="100%">
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 display_none border_1px">
+					{{products.id}}
+			</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 border_1px" ng-if="editMode">
+			
+			<form multiple class="dropzone" drop-zone="" id="my-dropzone" style="height:250px"></form>
+
+			<button class="sub_btn" class="" id="submit-all" ng-click="upld_image({{products.id}})">Upload Product</button>
+		</div>
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 margin_top_10 border_1px">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_18 margin_bottom_10 display_table border_1px">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_bold display_cell border_1px">
+					Name 
+				</div>
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell border_1px">:</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="!editMode">
+					{{products.name}}
+				</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="editMode">
+			        <input ng-model="products.name">
+			        <!-- <button ng-click="save(keyword); editMode = false">Save</button> -->
+			     </div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_18 margin_bottom_10 display_table border_1px">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_bold display_cell border_1px">
+					size 
+				</div>
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell border_1px">:</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="!editMode">
+					{{products.size}}
+				</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="editMode">
+			        <input ng-model="products.size">
+			     </div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_18 margin_bottom_10 display_table border_1px">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_bold display_cell border_1px">
+					Colour 
+				</div>
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell border_1px">:</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="!editMode">
+					{{products.color}}
+				</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="editMode">
+			        <input ng-model="products.color">
+			     </div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_18 margin_bottom_10 display_table border_1px">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_bold display_cell border_1px">
+					Material 
+				</div>
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell border_1px">:</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="!editMode">
+					{{products.material}}
+				</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="editMode">
+			        <input ng-model="products.material">
+			     </div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_18 margin_bottom_10 display_table border_1px">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_bold display_cell border_1px">
+					Price 
+				</div>
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell border_1px">:</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="!editMode">
+					{{products.Price}}
+				</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="editMode">
+			        <input ng-model="products.Price">
+			     </div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_18 margin_bottom_10 display_table border_1px">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_bold display_cell border_1px">
+					Description 
+				</div>
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell border_1px">:</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="!editMode">
+					{{products.description}}
+				</div>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 display_cell border_1px" ng-if="editMode">
+			        <input ng-model="products.description">
+			     </div>
+			</div>
+		</div>
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 margin_top_10 text-center border_1px">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2  border_1px">
+				<span class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sub_btn" ng-click="editKeyword(products); editMode = true" >Edit</span>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2  border_1px">
+				<span class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sub_btn" ng-click="save(products); editMode = false">Save</span>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 border_1px">
+				<span class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sub_btn" ng-click="delete(products)">Delete</span>
+			</div>
+			
+
+		</div>
+	</div>
+	<!-- <div><button ng-click="adminViewProdInit()">button</button></div> -->
+</div>

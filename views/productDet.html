@@ -1,0 +1,143 @@
+<div ng-controller="ProductDetCtrlr" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top_75 margin_bottom_50" ng-init="productDetInit()">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="sticky_anchor"></div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="w3-container pad_bottom_30 box_shadow">
+  			<h2>{{detail.id}}</h2>	
+			<div class="w3-card-12">
+			  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border_1px">
+					<img ng-src="{{detail.path}}" height="400px" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 w3-card-8 pad_0">
+		      	</div>
+		  <!-- <div class="w3-container w3-center"> -->
+		  	
+	      	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 font_size_20 pad_left_20 pad_0 border_1px">
+		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 display_table pad_top_20">
+		      			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell border_1px">Name</div>
+			      		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell text-center border_1px">:</div>
+			      		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px">{{detail.name}}</div>
+		      		</div>
+		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 display_table pad_top_20">
+		      			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell border_1px">Size</div>
+			      		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell text-center border_1px">:</div>
+			      		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px">{{detail.size}}</div>
+		      		</div>
+		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 display_table pad_top_20">
+		      			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell border_1px">Colour</div>
+			      		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell text-center border_1px">:</div>
+			      		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px">{{detail.color}}</div>
+		      		</div>
+		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 display_table pad_top_20">
+		      			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell border_1px">Material</div>
+			      		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell text-center border_1px">:</div>
+			      		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px">{{detail.material}}</div>
+		      		</div>
+		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 display_table pad_top_20">
+		      			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell border_1px">Price</div>
+			      		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell text-center border_1px">:</div>
+			      		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px">{{detail.Price}}</div>
+		      		</div>
+		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 display_table pad_top_20">
+		      			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell border_1px">Description</div>
+			      		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 display_cell text-center border_1px">:</div>
+			      		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px">{{detail.description}}</div>
+		      		</div>
+		      		<!-- 
+		      		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell border_1px">
+		      			Name
+		      		</div>
+		      		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display_cell border_1px">
+		      			:
+		      		</div>
+		      		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 display_cell border_1px">
+		      			Corn
+		      		</div> -->
+		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 display_table text-center pad_top_20">
+		      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 display_cell border_1px">
+		      				<button class="w3-button w3-teal" ng-click="click()">Calculate</button>
+		      			</div>
+		      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 display_cell border_1px">
+		      				<button class="w3-button w3-deep-orange">Send Sms</button>
+		      			</div>
+			      		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 display_cell border_1px">
+			      			<button class="w3-button w3-blue">Send Inquiry</button>
+			      		</div>
+		      		</div>
+		      	</div>
+		  </div>
+		</div>
+		
+	</div>
+</div>
+
+<div ng-controller="FooterCtrlr" class=" w3-container pad_0" ng-init="">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pad_top_bottom_10 top_75 font_size_17 font_Courgette bg_FFBB00 font_white border_1px">
+	<!-- <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 pad_top_15 border_1px"> -->
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 pad_right_left_50 border_1px">
+				<span class="pad_right_15">About Us</span>
+				<span class="pad_right_15">Enquiry</span>
+				<span class="pad_right_15">Feedback</span>
+				<span class="pad_right_15">Contact</span>
+				<span class="pad_right_15">FAQ</span>
+				<span class="pad_right_15">Help</span>
+				<span class="pad_right_15">Privacy Policy</span>
+				<span>Terms of Use</span>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border_1px text-center">
+				<span class="">Email Us : sairamnallaiahraj@gmail.com</span>
+			</div>
+			<!-- <span class="col-xs-8 col-sm-8 col-md-8 col-lg-7 pad_right_left_50 font_size_19 border_1px">"A great business at a fair price is superior to a fair business at a great price"
+				<span class="font_size_17 float_right">- Charlie Munger</span>
+			</span>
+			<span class="col-xs-4 col-sm-4 col-md-4 col-lg-5 border_1px text-center">
+				<span class="font_size_17">To start a great business</span><br>
+				<span class="font_size_19">Email Us : sairamnallaiahraj@gmail.com</span> -->
+			<!-- </span> -->
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pad_top_10 social_icons text-center">
+			<span class="pad_right_15"><a href="https://www.facebook.com/Myexp-702241653270676/" target="_blank"><img src="images/fb.png" class="cursor_pointer"></a></span>
+			<span class="pad_right_15"><a href="https://twitter.com/VishN_18" target="_blank"><img src="images/twitter.png" class="cursor_pointer"></a></span>
+			<span class="pad_right_15"><a href=""><img src="images/linkdin.png" class="cursor_pointer"></a></span>
+			<span><a href=""><img src="images/gplus.png" class="cursor_pointer"></a></span>
+			<!-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pad_left_70 pad_top_bottom_20 border_1px">
+				<p>About Us</p>
+				<p>Enquiry</p>
+				<p>Feedback</p>
+				<p>Privacy Policy</p>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pad_left_70 pad_top_bottom_20 border_1px">
+				<p>Contact</p>
+				<p>FAQ</p>
+				<p>Help</p>
+				<p>Terms of Use</p>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pad_left_70 border_1px">
+				<h4>Connect Us</h4>
+				<p>Facebook</p>
+				<p>Twitter</p>
+				<p>LinkedIn</p>
+				<p>Google Plus</p>
+			</div> -->
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+		</div>
+	<!-- </div> -->
+	<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 pad_0 pad_right_40 border_1px">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+				<img src="images/locatecustomer.png" class="width_55p border_rad_100 margin_top_20 margin_bottom_20 border_1px">
+				<p class="font_bold font_size_16">Nallaiah Raj Panchavarnam,<br><span class="font_light font_size_14">(Chief Executive Officer)</span></p>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p>Mobile :<span class="font_size_15 font_bold"> +91 9397321461</span></p>
+				<p>Office :<span class="font_size_15 font_bold"> </span></p>
+				<p>Email :<span class="font_size_15 font_bold"> sairamnallaiahraj@gmail.com<span></p>
+			</div>
+		</div> -->
+	<!-- <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 border_1px">
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 border_1px">
+			
+		</div>
+		
+	</div> -->
+</div>
+</div>
