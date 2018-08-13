@@ -274,6 +274,8 @@ textarea.materialize-textarea:focus:not([readonly]){
 .stud_leftpane{
   background: #94aaea;
     border-radius: 5px;
+        height: 600px;
+    overflow: scroll;
 }
 
 .datepicker-modal {
@@ -350,6 +352,18 @@ textarea.materialize-textarea:focus:not([readonly]){
     color: white;
     padding: 20px;
     border-radius: 10px;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid \9;
+    border-right: 0px !important;
+    border-left: 0px !important;
 }
 /*.modal{
   padding-right: 0px !important;

@@ -1,4 +1,4 @@
-app.directive('dropZone', ['$rootScope', function($rootScope) {
+app.directive('dropZone', ['$rootScope', '$timeout', function($rootScope,$timeout) {
     
     
   //   return function(scope, element, attrs) {
@@ -113,10 +113,11 @@ return function(scope, element, attrs) {
     var submitButton = document.querySelector("#submit-all");
         myDropzone = this; // closure
 
-    submitButton.addEventListener("click", function() {
+
+    $timeout(function() {submitButton.addEventListener("click", function() {
       myDropzone.processQueue(); // Tell Dropzone to process all queued files.
       // console.log(file.previewElement.querySelector("img").src);
-    });
+    });},2000)
 
     var filess = [];
     this.on('success', function(file, resp) { 
