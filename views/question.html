@@ -7,10 +7,10 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10 margin_bottom_100">
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_leftpane border_1px">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_bold font_white font_size_26 margin_bottom_10 text_underline">LIST OF TOPICS</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px" ng-click="showQuestiontab()"><span class="font_black  fas fa-thumbtack"></span>  DIMENSION AND MEASUREMENT</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  VECTORS</div>
+			<div ng-repeat="topArr in topicArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px" ng-click="showQuestiontab()"><span class="font_black  fas fa-thumbtack"></span> {{topArr.Module_Name}} </div>
+			<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  VECTORS</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-I</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-II</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-II</div> -->
 		</div>
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-8 bg_009688 border_rad_5 border_1px">
 			<div >
@@ -79,15 +79,17 @@
 											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Question</div>
 											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
 											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-												<textarea id="textarea1" class="ques_txtarea"></textarea>
+												<textarea id="textarea2" class="ques_txtarea"></textarea>
+												<input type="file" />
+
 											</div>
 										</div>
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+										<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Images</div>
 											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
 												<form multiple class="dropzone" drop-zone="" id="my-dropzone" class="font_black"></form>
 											</div>
-										</div>
+										</div> -->
 										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Difficulty</div>
 											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
@@ -102,23 +104,32 @@
 											</div>
 										</div>
 										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Type of Answer</div>
+											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+												<select id="selectedLevel" ng-model="select" class="red-text">
+													<option value="0" disabled selected>Select Type</option>
+													<option value="1">Multiple Choice</option>
+													<option value="2">Multiple Choice with Images</option>
+													<option value="3">True or False</option>
+													<!-- <option value="4">Master Class</option> -->
+												</select>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 											<span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20">Options :</span>
 											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-													<input id="first_name " type="text" class="validate">
-						          					<label for="first_name" class="pad_left_15">Option 1</label>
+													<textarea id="option1" class="ques_txtarea"></textarea>
 												</div>
 												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-													<input id="first_name " type="text" class="validate">
-						          					<label for="first_name" class="pad_left_15">Option 2</label>
+													<textarea id="option2" class="ques_txtarea"></textarea>
 												</div>
 												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-													<input id="first_name " type="text" class="validate">
-						          					<label for="first_name" class="pad_left_15">Option 3</label>
+													<textarea id="option3" class="ques_txtarea"></textarea>
 												</div>
 												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-													<input id="first_name " type="text" class="validate">
-						          					<label for="first_name" class="pad_left_15">Option 4</label>
+													<textarea id="option4" class="ques_txtarea"></textarea>
 												</div>
 											</div>
 										</div>
@@ -220,23 +231,26 @@
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Question</div>
-						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-							<textarea id="textarea1" class="ques_txtarea"></textarea>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Question :</div>
+						<!-- <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div> -->
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_black border_1px"  >
+							<textarea id="textarea1" name= "textarea1" class="ques_txtarea">
+
+						</textarea>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+
+					<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Images</div>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
 							<form multiple class="dropzone" drop-zone="" id="my-dropzone" class="font_black"></form>
 						</div>
-					</div>
+					</div> -->
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Difficulty</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-							<select id="selectedLevel" ng-model="select" class="red-text">
+							<select id="levelCreateQues" ng-model="select" class="red-text">
 								<option value="0" disabled selected>Select difficulty</option>
 								<option value="1">Easy</option>
 								<option value="2">Medium</option>
@@ -246,61 +260,94 @@
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-						<span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20">Options :</span>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-							<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-								<input id="first_name " type="text" class="validate">
-	          					<label for="first_name" class="pad_left_15">Option 1</label>
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Type of Answer</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<button class="sub_btn" id="">Cancel</button>
+						</div> -->
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+							<button class="sub_btn" id="multiple_Type" ng-click="optionType('Mutiple_type')">Mutiple Type</button>
+						</div>
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+							<button class="sub_btn" id="ToF" ng-click="optionType('ToF')">True or False</button>
+						</div>
+					</div>
+					<div ng-show="optionToF" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Options :</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+								<label>
+							        <input class="with-gap font_white" name="ToF" type="radio"  />
+							        <span class="font_white">True</span>
+							     </label>
 							</div>
-							<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-								<input id="first_name " type="text" class="validate">
-	          					<label for="first_name" class="pad_left_15">Option 2</label>
-							</div>
-							<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-								<input id="first_name " type="text" class="validate">
-	          					<label for="first_name" class="pad_left_15">Option 3</label>
-							</div>
-							<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-								<input id="first_name " type="text" class="validate">
-	          					<label for="first_name" class="pad_left_15">Option 4</label>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+								<label>
+							        <input class="with-gap font_white" name="ToF" type="radio"  />
+							        <span class="font_white">False</span>
+							     </label>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+					<div ng-show="optionAns" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20">Options :</span>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  margin_bottom_10">
+							<div class="input-field col-xs-12 col-sm-12 col-md-12 col-lg-12 font_black border_1px">
+								<span class="font_white font_size_16">Option A:</span>
+								<textarea id="optionCreate1" class="ques_txtarea"></textarea>
+							</div>
+							<div class="input-field col-xs-12 col-sm-12 col-md-12 col-lg-12 font_black border_1px">
+								<span class="font_white font_size_16">Option B:</span>
+								<textarea id="optionCreate2" class="ques_txtarea"></textarea>
+							</div>
+							<div class="input-field col-xs-12 col-sm-12 col-md-12 col-lg-12 font_black border_1px">
+								<span class="font_white font_size_16">Option C:</span>
+								<textarea id="optionCreate3" class="ques_txtarea"></textarea>
+							</div>
+							<div class="input-field col-xs-12 col-sm-12 col-md-12 col-lg-12 font_black border_1px">
+								<span class="font_white font_size_16">Option D:</span>
+								<textarea id="optionCreate4" class="ques_txtarea"></textarea>
+							</div>
+						</div>
+					</div>
+					<div ng-show="optionAns" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Correct Option</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 								<label>
-							        <input class="with-gap font_white" name="group1" type="radio"  />
-							        <span class="font_white">Green</span>
+							        <input class="with-gap font_white" name="opt" type="radio"  />
+							        <span class="font_white">A</span>
 							     </label>
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 								<label>
-							        <input class="with-gap font_white" name="group1" type="radio"  />
-							        <span class="font_white">Green</span>
+							        <input class="with-gap font_white" name="opt" type="radio"  />
+							        <span class="font_white">B</span>
 							     </label>
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 								<label>
-							        <input class="with-gap font_white" name="group1" type="radio"  />
-							        <span class="font_white">Green</span>
+							        <input class="with-gap font_white" name="opt" type="radio"  />
+							        <span class="font_white">C</span>
 							     </label>
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 								<label>
-							        <input class="with-gap font_white" name="group1" type="radio"  />
-							        <span class="font_white">Green</span>
+							        <input class="with-gap font_white" name="opt" type="radio"  />
+							        <span class="font_white">D</span>
 							     </label>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Explanation</div>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
-							<form multiple class="dropzone" drop-zone="" id="my-dropzone1" class="font_black"></form>
-						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Explanation :</div>
+						<div class="input-field col-xs-12 col-sm-12 col-md-12 col-lg-12 font_black border_1px">
+								<!-- <span class="font_white font_size_16">Option A:</span> -->
+								<textarea id="explanation1" class="ques_txtarea"></textarea>
+							</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -310,16 +357,24 @@
 							<button class="sub_btn" id="" ng-click="reset()">Reset</button>
 						</div>
 						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<button class="sub_btn" id="submit-all">Create Question</button>
+							<button class="sub_btn" id="" ng-click="createQuesSubmit()">Create Question</button>
 						</div>
 						
 					</div>
 				</div>
+				<!-- <div style="width:860px; margin: 30px auto;">
+  <div style="color:#aa0000;font-weight:bold">$.wysiwyg(): Toolbar on top and on selection, smiley+fontname+fontsize plugin:</div>
+  <textarea id="editor0" name="editor" placeholder="Type your text here...">
+    Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </textarea>
+</div> -->
 </div>
 
 <script type="text/javascript">
-	 // $(document).ready(function(){
-  //   // $('.modal').modal();
-  // });
+	 
 </script>
+    <script src="scripts/main/services/wysiwyg.js"></script>
+
 <!-- <script src="lib/materialize/materialize.min.js"></script> -->
