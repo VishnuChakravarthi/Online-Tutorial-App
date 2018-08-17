@@ -4,7 +4,7 @@ app.controller('StudentDetailCtrlr',['$scope','$rootScope','$log','$http','$wind
   function ($scope,$rootScope,$log,$http,$window,$controller,$location,$route,$timeout, localStorageService) {
 
     $scope.studentType = ["Regular","Short Term"];
-    $scope.sex = ["Male","Female", "Transgender"];
+    $scope.sex = ["Male","Female", "Others"];
     $scope.studentStatus = ["Activate","Deactivate"];
     $scope.saveArr = [];
 

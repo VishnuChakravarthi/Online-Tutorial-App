@@ -7,17 +7,16 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10 margin_bottom_100">
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_leftpane border_1px">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_bold font_white font_size_26 margin_bottom_10 text_underline">LIST OF TOPICS</div>
-			<div ng-repeat="topArr in topicArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px" ng-click="showQuestiontab()"><span class="font_black  fas fa-thumbtack"></span> {{topArr.Module_Name}} </div>
+			<div ng-repeat="topArr in topicArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px" ng-click='showQuestiontab("{{topArr.Module_Name}}", "{{topArr.TopicCode}}")'><span class="font_black  fas fa-thumbtack"></span> {{topArr.Module_Name}} </div>
 			<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  VECTORS</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-I</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-II</div> -->
 		</div>
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-8 bg_009688 border_rad_5 border_1px">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-8 bg_ff000040 border_rad_5 border_1px">
 			<div >
 				<h3 class="text-center text_underline">Question Management Page</h3>
 				<div ng-hide="showQuesTab1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_30 text-center font_white "> Click a topic to view questions</div>
-
- 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center margin_bottom_10 border_1px">
+ 				<div ng-show="showQuesTab" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center margin_bottom_10 border_1px">
 					<button ng-show="createQuesBtn" ng-click="createQues()" class = "sub_btn border_none font_size_20">Create Question</button>
 				</div>
 				<div ng-show="showQuesTab" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white">
@@ -26,7 +25,7 @@
 						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Topic Name</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_size_20 font_white border_1px">
-							DIMENSION AND MEASUREMENT
+							{{topicName}}
 						<!-- <label>Choose an Activity</label> -->
 					<!-- </div> -->
 						</div>
@@ -35,8 +34,8 @@
 						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Difficulty</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-							<select id="selectDiff" ng-change="showQuestions()" ng-model="select" class="red-text">
-								<option value="0" disabled selected>Select difficulty</option>
+							<select id="selectDiff" ng-change="showQuestions()" ng-model="select" class="form-control">
+								<option value="0" selected>Select difficulty</option>
 								<option value="1">Easy</option>
 								<option value="2">Medium</option>
 								<option value="3">Hard</option>
@@ -45,187 +44,199 @@
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div ng-repeat = "questions in quesArr  | filter: {'QusRating' :select} track by $index" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10 ques_dis">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10 ques_wrap">
-								Ques 1 : When a pipe with diameter 10 cm will Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat. 
+								<div class="" ng-bind-html="questions.QusStatement"></div>
 
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-								<button data-target="modal1" ng-click="viewQues()" class="btn modal-trigger">View/Edit</button>
-									
-								<div id="modal1" class="modal">
-								    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 modal-content font_black font_size_30">
-								      <h4>View/Edit Question</h4>
-								      <p ng-hide="editQues">Ques 1 : When a pipe with diameter 10 cm will Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat
-								      	<ul ng-hide="editQues">
-							      			<li>a. First<li>
-							      			<li>b. second<li>
-							      			<li class = "font_red">c. Third<li>
-							      			<li>d. fourth<li>
-								      	</ul>
-								      </p>
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10  modal_editques font_white" ng-show="editQues">
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Topic Name</div>
-											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
-											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white font_size_20 border_1px">
-							<!-- <div class="input-field col s12"> -->
-											DIMENSION AND MEASUREMENT
-						<!-- <label>Choose an Activity</label> -->
-					<!-- </div> -->
-											</div>
-										</div>
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Question</div>
-											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
-											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-												<textarea id="textarea2" class="ques_txtarea"></textarea>
-												<input type="file" />
-
-											</div>
-										</div>
-										<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Images</div>
-											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
-												<form multiple class="dropzone" drop-zone="" id="my-dropzone" class="font_black"></form>
-											</div>
-										</div> -->
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Difficulty</div>
-											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
-											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-												<select id="selectedLevel" ng-model="select" class="red-text">
-													<option value="0" disabled selected>Select difficulty</option>
-													<option value="1">Easy</option>
-													<option value="2">Medium</option>
-													<option value="3">Hard</option>
-													<option value="4">Master Class</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Type of Answer</div>
-											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
-											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-												<select id="selectedLevel" ng-model="select" class="red-text">
-													<option value="0" disabled selected>Select Type</option>
-													<option value="1">Multiple Choice</option>
-													<option value="2">Multiple Choice with Images</option>
-													<option value="3">True or False</option>
-													<!-- <option value="4">Master Class</option> -->
-												</select>
-											</div>
-										</div>
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-											<span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20">Options :</span>
-											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-													<textarea id="option1" class="ques_txtarea"></textarea>
-												</div>
-												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-													<textarea id="option2" class="ques_txtarea"></textarea>
-												</div>
-												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-													<textarea id="option3" class="ques_txtarea"></textarea>
-												</div>
-												<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-													<textarea id="option4" class="ques_txtarea"></textarea>
-												</div>
-											</div>
-										</div>
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Correct Option</div>
-											<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
-											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-												<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-													<label>
-												        <input class="with-gap font_white" name="group1" type="radio"  />
-												        <span class="font_white">Option 1</span>
-												     </label>
-												</div>
-												<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-													<label>
-												        <input class="with-gap font_white" name="group1" type="radio"  />
-												        <span class="font_white">Option 2</span>
-												     </label>
-												</div>
-												<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-													<label>
-												        <input class="with-gap font_white" name="group1" type="radio"  />
-												        <span class="font_white">Option 3</span>
-												     </label>
-												</div>
-												<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-													<label>
-												        <input class="with-gap font_white" name="group1" type="radio"  />
-												        <span class="font_white">Option 4</span>
-												     </label>
-												</div>
-											</div>
-										</div>
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Explanation</div>
-											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
-												<form multiple class="dropzone" drop-zone="" id="my-dropzone1" class="font_black"></form>
-											</div>
-										</div>
-									</div>
-								    </div>
-								    <div class="modal-footer">
-								    	<a href="" ng-click="closeQues()" class="modal-close waves-effect waves-green btn-flat">Close</a>
-								    	<a href="" ng-hide="editQues" ng-click="editQuestion()" class="waves-effect waves-green btn-flat">Edit</a>
-								    	<a href="" ng-show="editQues" ng-click="updateQues()" class="waves-effect waves-green btn-flat">Update</a>
-								      	
-								    </div>
-								  </div>
-
-								 
-								<!-- <button ng-click="viewQues()">Read More>></button> -->
-								<!-- <div id="myModal" class="modal fade" role="dialog"> -->
-								   <!-- <div class="modal-dialog"> -->
-
-								    <!-- Modal content -->
-								    <!-- <div class="modal-content">
-								      <div class="modal-header">
-								        <button type="button" class="close" data-dismiss="modal">&times;</button>
-								        <h4 class="modal-title">Modal Header</h4>
-								      </div>
-								      <div class="modal-body">
-								        <p>Some text in the modal.</p>
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								      </div>
-								    </div>
-
-								  </div>
-								</div>
+								<button ng-click="viewQues(questions.QusId)" class="btn modal-trigger">View/Edit</button>
 							</div>
 						</div>
 					</div>
-					<!-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border_1px"></div> -->
-					<!-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center margin_bottom_10 border_1px">
-						<button ng-click="activate = !activate" class = "width_60p border_none border_rad_10 font_size_20 pad_0 font_black">
-							<div ng-if="!activate" class="button btn-info" ng-click="activateStudent()">Activate</div>
-							<div ng-if="activate" class="button btn-danger" ng-click="deactivateStudent()">Deactivate</div>
-						</button>
-
-					</div> -->
 				</div>
+				<!-- Answer_display -->
+				<div ng-show="viewAns" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+				   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 modal-content font_black font_size_30">
+				      <h4>View/Edit Question</h4>
+				      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-hide="editQues">
+				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Difficulty Rating :</div>
+				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" >{{rat}}</div>
+				      	</div>
+				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Answer Type :</div>
+				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv">{{ans}}</div>
+				      	</div>
+				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Question :</div>
+				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusStatement"></div>
+				      	</div>
+				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Option 1 :</div>
+				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt1"></div>
+				      	</div>
+				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Option 2 :</div>
+				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt2"></div>
+				      	</div>
+				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Option 3 :</div>
+				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt3"></div>
+				      	</div>
+				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Option 4 :</div>
+				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt4"></div>
+				      	</div>
+				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Explanation :</div>
+				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusSolutionExpln"></div>
+				      	</div>	
+					      	<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-bind-html="uniqueQues.QusStatement"></div>
+				  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-bind-html="uniqueQues.QusOpt1"></div>
+				  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-bind-html="uniqueQues.QusOpt2"></div>
+				  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-bind-html="uniqueQues.QusOpt3"></div>
+				  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-bind-html="uniqueQues.QusOpt4"></div>
+				  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-bind-html="uniqueQues.QusSolutionExpln"></div> -->
+				      </div>
+				      
+				      	<!-- </ul> -->
+				      	<div class="col-xs-6 col-sm-6 col-md-8 col-lg-4">
+				      	</div>
+				      	<div class="col-xs-6 col-sm-6 col-md-8 col-lg-4 margin_bottom_10">
+				      		<button ng-click="editQuestion(uniqueQues.QusId)" class="btn waves-effect waves-green font_size_20 btn-flat">Edit</button>
+				      	</div>
+				      
+				  	</div>
+				</div>
+
+
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10  modal_editques font_white" ng-show="editQues">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px">Topic Name</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 font_white font_size_20 border_1px">
+						{{topicName}}
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px">Question :</div>
+						<!-- <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div> -->
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_black border_1px" id="textareaEditdiv" >
+							<textarea id="textareaEdit" class="ques_txtarea height_100 font_black"><!-- <div id="textareaEdited{{$index}}" ng-bind-html="uniqueQues.QusStatement"> --></div></textarea>
+
+						</div>
+					</div>
+				<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Images</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
+						<form multiple class="dropzone" drop-zone="" id="my-dropzone" class="font_black"></form>
+					</div>
+				</div> -->
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px">Difficulty</div>
+					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 font_white border_1px" >
+						<select id="selectedLevelEdit" ng-model="uniqueQues.QusRating" class="form-control">
+							<option value="0" disabled selected>Select difficulty</option>
+							<option value="1">Easy</option>
+							<option value="2">Medium</option>
+							<option value="3">Hard</option>
+							<option value="4">Master Class</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px">Type of Answer</div>
+					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 font_white border_1px"  >
+						<select id="selectedLevel" ng-model="uniqueQues.ansType" class="form-control">
+							<option value="0" disabled selected>Select Type</option>
+							<option value="1">Multiple Choice</option>
+							<option value="2">Multiple Answer</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10" >
+					<span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20">Options :</span>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_black margin_bottom_10">
+						<div class="input-field col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white border_1px" id="optionEdit1div">
+							<textarea id="optionEdit1" class="ques_txtarea  height_100 font_black"></textarea>
+						</div>
+						<div class="input-field col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white border_1px" id="optionEdit2div">
+							<textarea id="optionEdit2" class="ques_txtarea height_100 font_black"></textarea>
+						</div>
+						<div class="input-field col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white border_1px"id="optionEdit3div">
+							<textarea id="optionEdit3" class="ques_txtarea height_100 font_black"></textarea>
+						</div>
+						<div class="input-field col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white border_1px"id="optionEdit4div">
+							<textarea id="optionEdit4" class="ques_txtarea height_100 font_black"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px">Correct Option</div>
+					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 font_white border_1px" id="che" >
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px" >
+							<label class="font_white">
+								<input type="checkbox" class="checkOpt" checklist-model="" value='A'>
+						        <!-- <input class="with-gap font_white" name="group1" type="radio"  /> -->
+						        <span class="font_white">Option A</span>
+						     </label>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<label>
+						        <input type="checkbox" class="checkOpt" checklist-model="" value='B'>
+						        <span class="font_white">Option B</span>
+						     </label>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<label>
+						        <input type="checkbox" class="checkOpt" checklist-model="" value='C'>
+						        <span class="font_white">Option C</span>
+						     </label>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<label>
+						        <input type="checkbox" class="checkOpt" checklist-model="" value='D'>
+						        <span class="font_white">Option D</span>
+						     </label>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Explanation</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 font_black border_1px" id="quesExplndiv">
+						<textarea id="explEdit" class="ques_txtarea height_100 font_black" ><!-- <div id="textareaEditExp{{$index}}" ng-bind-html="uniqueQues.QusSolutionExpln"> --></textarea>
+						<!-- <form multiple class="dropzone" drop-zone="" id="my-dropzone1" class="font_black"></form> -->
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 ">
+			      	
+			    </div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 margin_bottom_10">
+			    	<button ng-click="closeQues()" class="btn font_white font_white font_size_20 waves-effect waves-green btn-flat">Close</button>
+			    	
+			    	<button ng-click="updateQues('{{$index}}', uniqueQues.QusId)" class="btn font_white font_size_20 waves-effect waves-green btn-flat">Update</button>
+			      	
+			    </div>
 			</div>
-		</div>
-	</div>
-	<!-- <div ng-hide="createQuesBtn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center margin_bottom_10 border_1px">
-		<span class="font_size_20 font_white">Or</span>
-	</div> -->
-	<div ng-show="createQuesTab" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white">
+
+
+
+
+
+
+			</div>
+			<div ng-show="createQuesTab" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white">
 					<!-- <h4>Student Details</h4> -->
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px ">Topic Name</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white font_size_20 border_1px">
 							<!-- <div class="input-field col s12"> -->
-							DIMENSION AND MEASUREMENT
+							{{topicName}}
 						<!-- <label>Choose an Activity</label> -->
 					<!-- </div> -->
 						</div>
@@ -239,18 +250,11 @@
 						</textarea>
 						</div>
 					</div>
-
-					<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Images</div>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
-							<form multiple class="dropzone" drop-zone="" id="my-dropzone" class="font_black"></form>
-						</div>
-					</div> -->
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Difficulty</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-							<select id="levelCreateQues" ng-model="select" class="red-text">
+							<select id="levelCreateQues" ng-model="select" ng-change="sortQues()" class="red-text">
 								<option value="0" disabled selected>Select difficulty</option>
 								<option value="1">Easy</option>
 								<option value="2">Medium</option>
@@ -262,36 +266,37 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Type of Answer</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
-						<!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<button class="sub_btn" id="">Cancel</button>
-						</div> -->
-						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<button class="sub_btn" id="multiple_Type" ng-click="optionType('Mutiple_type')">Mutiple Type</button>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<select id="QuesType" ng-model="select" class="red-text">
+								<option value="0" disabled selected>Select Type</option>
+								<option value="1">Multiple Choice</option>
+								<option value="2">Multiple Answer</option>
+							</select>
+							<!-- <button class="sub_btn" id="multiple_Type" ng-click="optionType('1')">Mutiple Type</button>
 						</div>
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<button class="sub_btn" id="ToF" ng-click="optionType('ToF')">True or False</button>
+							<button class="sub_btn" id="ToF" ng-click="optionType('2')">Multiple Answer</button> -->
 						</div>
 					</div>
-					<div ng-show="optionToF" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+					<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Options :</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 								<label>
-							        <input class="with-gap font_white" name="ToF" type="radio"  />
+							        <input class="with-gap font_white" name="ToF" type="radio" value="True" />
 							        <span class="font_white">True</span>
 							     </label>
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 								<label>
-							        <input class="with-gap font_white" name="ToF" type="radio"  />
+							        <input class="with-gap font_white" name="ToF" type="radio" value="False" />
 							        <span class="font_white">False</span>
 							     </label>
 							</div>
 						</div>
-					</div>
-					<div ng-show="optionAns" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+					</div> -->
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20">Options :</span>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  margin_bottom_10">
 							<div class="input-field col-xs-12 col-sm-12 col-md-12 col-lg-12 font_black border_1px">
@@ -312,34 +317,35 @@
 							</div>
 						</div>
 					</div>
-					<div ng-show="optionAns" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Correct Option</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-								<label>
-							        <input class="with-gap font_white" name="opt" type="radio"  />
-							        <span class="font_white">A</span>
-							     </label>
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-								<label>
-							        <input class="with-gap font_white" name="opt" type="radio"  />
-							        <span class="font_white">B</span>
-							     </label>
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-								<label>
-							        <input class="with-gap font_white" name="opt" type="radio"  />
-							        <span class="font_white">C</span>
-							     </label>
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
-								<label>
-							        <input class="with-gap font_white" name="opt" type="radio"  />
-							        <span class="font_white">D</span>
-							     </label>
-							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<label class="font_white">
+								<input type="checkbox" class="checkOptCreate" name="createCheck" value="A">
+						        <!-- <input class="with-gap font_white" name="group1" type="radio"  /> -->
+						        <span class="font_white">Option A</span>
+						     </label>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<label>
+						        <input type="checkbox" class="checkOptCreate" name="createCheck" value="B">
+						        <span class="font_white">Option B</span>
+						     </label>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<label>
+						        <input type="checkbox" class="checkOptCreate" name="createCheck" value="C">
+						        <span class="font_white">Option C</span>
+						     </label>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<label>
+						        <input type="checkbox" class="checkOptCreate" name="createCheck" value="D">
+						        <span class="font_white">Option D</span>
+						     </label>
+						</div>
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
@@ -357,19 +363,15 @@
 							<button class="sub_btn" id="" ng-click="reset()">Reset</button>
 						</div>
 						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<button class="sub_btn" id="" ng-click="createQuesSubmit()">Create Question</button>
+							<button class="sub_btn" id="" ng-click='createQuesSubmit(topicCode)'>Create Question</button>
 						</div>
-						
 					</div>
 				</div>
-				<!-- <div style="width:860px; margin: 30px auto;">
-  <div style="color:#aa0000;font-weight:bold">$.wysiwyg(): Toolbar on top and on selection, smiley+fontname+fontsize plugin:</div>
-  <textarea id="editor0" name="editor" placeholder="Type your text here...">
-    Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-    Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </textarea>
-</div> -->
+		</div>
+	<!-- <div ng-hide="createQuesBtn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center margin_bottom_10 border_1px">
+		<span class="font_size_20 font_white">Or</span>
+	</div> -->
+	
 </div>
 
 <script type="text/javascript">

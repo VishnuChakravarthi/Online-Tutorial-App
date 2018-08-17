@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // Full featured editor
-    $('#textarea1, #optionCreate1, #optionCreate2, #optionCreate3, #optionCreate4, #explanation1').each( function(index, element)
+    $('#textarea1, #optionCreate1, #optionCreate2, #optionCreate3, #optionCreate4, #explanation1, #topicEdit,#textareaEdit, #optionEdit4, #optionEdit3, #optionEdit2, #optionEdit1, #explEdit').each( function(index, element)
     {
         $(element).wysiwyg({
             classes: 'some-more-classes',

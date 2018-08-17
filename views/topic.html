@@ -8,10 +8,10 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10 margin_bottom_100">
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_leftpane border_1px">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_white font_bold font_size_26 margin_bottom_10 text_underline">LIST OF TOPICS</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px" ng-click="showTopictab()"><span class="font_black  fas fa-thumbtack"></span>  DIMENSION AND MEASUREMENT</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  VECTORS</div>
+			<div ng-repeat="topArr in topicArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px" ng-click='showTopictab("{{topArr.Module_Name}}")'><span class="font_black  fas fa-thumbtack"></span>  {{topArr.Module_Name}}</div>
+			<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  VECTORS</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-I</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-II</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-II</div> -->
 		</div>
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-8 bg_009688 border_rad_5 border_1px">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bg_009688 border_rad_5 border_1px">
@@ -27,7 +27,7 @@
 						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Topic Name</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_size_20 font_white border_1px">
-							DIMENSION AND MEASUREMENT
+							{{topicName}}
 						<!-- <label>Choose an Activity</label> -->
 					<!-- </div> -->
 						</div>
@@ -48,7 +48,7 @@
 								      <h4>View/Edit Question</h4>
 								      <p ng-hide="editContent">When a pipe with diameter 10 cm will Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat</p>
 								      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="editContent">
-								    	<textarea></textarea>
+								    	<textarea id="topicEdit"></textarea>
 								    </div>
 								    </div>
 
@@ -81,12 +81,12 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+					<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Documents :</div>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
 							<form multiple class="dropzone" drop-zone="" id="my-dropzone1" class="font_black"></form>
 						</div>
-					</div>
+					</div> -->
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 							<!-- <button class="sub_btn" id="" ng-click="reset()">Reset</button> -->
@@ -167,3 +167,5 @@
 		</div>
 </div> -->
 </div>
+
+    <script src="scripts/main/services/wysiwyg.js"></script>

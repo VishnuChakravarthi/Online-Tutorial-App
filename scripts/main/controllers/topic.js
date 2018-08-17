@@ -8,26 +8,25 @@ app.controller('TopicCtrlr',['$scope','$rootScope','$log','$http','$window','$co
       $("#slide-out").sidenav();
       $("#selectedtpc").formSelect();
       $("#selectedDocType").formSelect();
-  		// $scope.type = 'topics';
-    //   var postData = {
-    //     'action' : 'getFile',
-    //     'tableName' : $scope.type
-    //   }
+  		var postData = {
+        'action' : 'getTopicList',
+        'tableName' : 'topiccode'
+      }
 
-    //   $log.debug(postData);
-    //   $http({
-    //     method  : 'POST',
-    //     url     : "php/viewProduct.php",
-    //     data    : postData, 
-    //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    //     // headers : {'Content-Type':'application/json'} 
-    //   }).success(function (data) {     
-    //     // $scope.arr = data);
-    //       $scope.arr = data;
-    //       // $log.debug(data);
-    //   }).error(function (error) {
-    //      $log.debug(error);
-    //   });
+      $log.debug(postData);
+      $http({
+        method  : 'POST',
+        url     : "php/getTopicList.php",
+        data    : postData, 
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        // headers : {'Content-Type':'application/json'} 
+      }).success(function (data) {     
+        // $scope.arr = data);
+          $scope.topicArray = data;
+          console.log($scope.topicArray);
+      }).error(function (error) {
+         console.log(error);
+      });
   	}
 
 	// $scope.product_det = function(products){
@@ -57,15 +56,15 @@ $scope.editTopicContent = function(){
       $scope.createTopicTab = true;
     }
 
-    $scope.showTopictab = function(){
+    $scope.showTopictab = function(topicname){
       $scope.createTopicBtn = false;
       $scope.viewTopic = true;
       $scope.showTopicTab1 = true;
       $scope.createTopicTab = false;
+      $scope.topicName = topicname;
     };
 
     $scope.showUploadZone = function(){
-
       $scope.drop = true;
     }
 

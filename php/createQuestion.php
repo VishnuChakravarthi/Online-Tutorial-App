@@ -1,32 +1,34 @@
 <?php
 include "login_db.php";
 
-	if (isset($_POST['action']) && $_POST['action'] == 'createQuestion'){
-	$tableName = $_POST['tableName'];
-	$first_name = $_POST['first_name'];
-	$last_name = $_POST['last_name'];
-	$dob = $_POST['dob']; 
-	$email_id = $_POST['email_id']; 
-	$user_id = $_POST['user_id'];
-	$course = $_POST['course'];
-	$session_start = $_POST['session_start'];
-	$session_end = $_POST['session_end'];
-	$student_type = $_POST['student_type'];
-	$date_created = $_POST['date_created'];
+$postdata = file_get_contents("php://input");
+ $request = json_decode($postdata);
+
+if ($request->action == 'createQuestions'){
+	$tableName = $request->tableName;
+	$topic_code = $request->topiccode;
+	$question = $request->question;
+	$ans_type = $request->typeOfAns;
+	$difficulty = $request->difficulty; 
+	$option1 = $request->option1; 
+	$option2 = $request->option2;
+	$option3 = $request->option3;
+	$option4 = $request->option4;
+	$correct_opt = $request->correctOption;
+	$explanation = $request->explanation;
 
 	
-    	$sql = "INSERT INTO $tableName (first_name, last_name, dob, email_id, user_id, course, session_start, session_end, stud_type, date_created)
-			VALUES ('$first_name', '$last_name', '$dob', '$email_id', '$user_id', '$course', '$session_start', '$session_end', '$student_type', 'date_created')";
+    	$sql = "INSERT INTO $tableName (TopicCode, QusStatement, ansType, QusRating, QusOpt1, QusOpt2, QusOpt3, QusOpt4, QusSolution, QusSolutionExpln)
+			VALUES ('$topic_code', '$question', '$ans_type', '$difficulty', '$option1', '$option2', '$option3', '$option4', '$correct_opt', '$explanation')";
 
 			if ($conn->query($sql) === TRUE) {
-			    // echo "New record created successfully";
-			    echo "1";
+			    echo 1;
 			} else {
 			    echo "Error: " . $sql . "<br>" . $conn->error;
-			    echo "0";
+			    // echo 0;
 			}
 	
 }
-
-
+// echo 0;
+$conn->close();
 ?>
