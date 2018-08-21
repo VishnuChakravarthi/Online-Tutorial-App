@@ -208,7 +208,7 @@
 }
 
 .topic_left_pane{
-    padding: 10px;
+    /*padding: 10px;*/
     background: #6e00ff9e;
     color: white;
     cursor: pointer;
@@ -271,11 +271,18 @@ textarea.materialize-textarea:focus:not([readonly]){
   border-radius: 5px;
 }
 
+.stud_left{
+      background: #94aaea;
+    padding: 0px;
+    border-radius: 5px
+}
+
 .stud_leftpane{
-  background: #94aaea;
+  /*background: #94aaea;*/
     border-radius: 5px;
-        height: 600px;
-    overflow: scroll;
+    height: 600px;
+    overflow-y: scroll;
+    padding-top: 10px;
 }
 
 .datepicker-modal {
@@ -443,6 +450,31 @@ textarea.materialize-textarea:focus:not([readonly]){
     background: #33ff0080;
     border-radius: 5px;
   }
+
+
+  .topic_disp{
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+     text-overflow: ellipsis !important; 
+    display: -webkit-box;
+    line-height: 38px;
+    max-height: 35px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+ /* .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}*/
 /*.modal{
   padding-right: 0px !important;
 }

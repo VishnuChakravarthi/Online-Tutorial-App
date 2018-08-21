@@ -1,13 +1,15 @@
-<div ng-controller="QuestionCtrlr" class="" ng-init="quesInit()">
+<div ng-controller="QuestionCtrlr" class="margin_top_80" ng-init="quesInit()">
 	<div class="col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px"></div> 
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 font_size_20 subscribe_box border_1px" id="sticky_new">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 font_size_20 subscribe_box border_1px">
 		<div ng-include="'views/navigator.html'"></div>
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="sticky_anchor"></div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10 margin_bottom_100">
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_leftpane border_1px">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_left border_1px">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_bold font_white font_size_26 margin_bottom_10 text_underline">LIST OF TOPICS</div>
-			<div ng-repeat="topArr in topicArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px" ng-click='showQuestiontab("{{topArr.Module_Name}}", "{{topArr.TopicCode}}")'><span class="font_black  fas fa-thumbtack"></span> {{topArr.Module_Name}} </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 stud_leftpane">
+				<a ng-repeat="topArr in topicArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 border_rad_5 topic_disp border_1px" data-toggle="tooltip" data-placement="right" title="{{topArr.Module_Name}}" ng-click='showQuestiontab("{{topArr.Module_Name}}", "{{topArr.TopicCode}}")'><span class="font_black  fas fa-thumbtack"></span> {{topArr.Module_Name}} </a>
+			</div>
+			
 			<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  VECTORS</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-I</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-II</div> -->
@@ -74,19 +76,19 @@
 				      	</div>
 				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Option 1 :</div>
-				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt1"></div>
+				      		<div id="ansA" class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt1"></div>
 				      	</div>
 				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Option 2 :</div>
-				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt2"></div>
+				      		<div id="ansB" class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt2"></div>
 				      	</div>
 				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Option 3 :</div>
-				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt3"></div>
+				      		<div id="ansC" class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt3"></div>
 				      	</div>
 				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Option 4 :</div>
-				      		<div class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt4"></div>
+				      		<div id="ansD" class="col-xs-6 col-sm-6 col-md-8 col-lg-9 ans_viewDiv" ng-bind-html="uniqueQues.QusOpt4"></div>
 				      	</div>
 				      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
 				      		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ans_viewspan">Explanation :</div>
@@ -180,26 +182,26 @@
 					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 font_white border_1px" id="che" >
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px" >
 							<label class="font_white">
-								<input type="checkbox" class="checkOpt" checklist-model="" value='A'>
+								<input type="checkbox" class="checkOpt" name="updateCheck" value='A'>
 						        <!-- <input class="with-gap font_white" name="group1" type="radio"  /> -->
 						        <span class="font_white">Option A</span>
 						     </label>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 							<label>
-						        <input type="checkbox" class="checkOpt" checklist-model="" value='B'>
+						        <input type="checkbox" class="checkOpt" name="updateCheck" value='B'>
 						        <span class="font_white">Option B</span>
 						     </label>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 							<label>
-						        <input type="checkbox" class="checkOpt" checklist-model="" value='C'>
+						        <input type="checkbox" class="checkOpt" name="updateCheck" value='C'>
 						        <span class="font_white">Option C</span>
 						     </label>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
 							<label>
-						        <input type="checkbox" class="checkOpt" checklist-model="" value='D'>
+						        <input type="checkbox" class="checkOpt" name="updateCheck" value='D'>
 						        <span class="font_white">Option D</span>
 						     </label>
 						</div>
@@ -218,7 +220,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 margin_bottom_10">
 			    	<button ng-click="closeQues()" class="btn font_white font_white font_size_20 waves-effect waves-green btn-flat">Close</button>
 			    	
-			    	<button ng-click="updateQues('{{$index}}', uniqueQues.QusId)" class="btn font_white font_size_20 waves-effect waves-green btn-flat">Update</button>
+			    	<button ng-click="updateQues(uniqueQues.TopicCode, uniqueQues.QusId)" class="btn font_white font_size_20 waves-effect waves-green btn-flat">Update</button>
 			      	
 			    </div>
 			</div>

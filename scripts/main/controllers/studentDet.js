@@ -3,9 +3,16 @@
 app.controller('StudentDetailCtrlr',['$scope','$rootScope','$log','$http','$window','$controller','$location','$route', '$timeout', 'localStorageService',
   function ($scope,$rootScope,$log,$http,$window,$controller,$location,$route,$timeout, localStorageService) {
 
-    $scope.studentType = ["Regular","Short Term"];
-    $scope.sex = ["Male","Female", "Others"];
-    $scope.studentStatus = ["Activate","Deactivate"];
+    $scope.studentType = [
+    {'name' :"Regular", 'value' : "Regular"},
+    {'name' : 'Short Term' , 'value' : "Short Term"}];
+    $scope.sex = [
+    {'name' : "Male", 'value' : "Male"},
+    {'name' : "Female", 'value' : "Female"},
+    {'name' : "Others", 'value' : "Others"}];
+    $scope.studentStatus = [
+    {'name' :"Activate", 'value' : "Activate"},
+    {'name' : "Deactivate",'value' : "Deactivate"}];
     $scope.saveArr = [];
 
 
@@ -54,9 +61,11 @@ app.controller('StudentDetailCtrlr',['$scope','$rootScope','$log','$http','$wind
   $scope.editKeyword = function(sd){
     console.log(sd);
     $scope.editBtn = true;
-     $timeout(function () {
-            $('select').material_select()
-         });
+     // $timeout(function () {
+     //        $('select').material_select();
+     //     });
+            $('#selectSex1').val('3').selected;
+
   }
 
      
@@ -107,6 +116,7 @@ app.controller('StudentDetailCtrlr',['$scope','$rootScope','$log','$http','$wind
       $scope.show1 = true;
       $scope.createStudBtn = false;
       $scope.addStud = false;
+      $scope.editBtn = false;
 
       var postData = {
         'action' : 'getStudentDetail',
@@ -150,7 +160,7 @@ app.controller('StudentDetailCtrlr',['$scope','$rootScope','$log','$http','$wind
 
     };
 
-    $timeout(function() {
+    // $timeout(function() {
       $scope.uploadFile = function(files) {
       console.log(files);
     // $scope.type = $scope.product_type.toLowerCase();
@@ -208,9 +218,10 @@ app.controller('StudentDetailCtrlr',['$scope','$rootScope','$log','$http','$wind
           }
         },
         error: function(e){
-          $log.debug(e);
+          console.log(e);
         }
       });
+    $route.reload();
     }else if($scope.tag == "save"){
       // $scope.action = 'updateStudent';
       console.log($scope.saveArr);
@@ -261,17 +272,20 @@ app.controller('StudentDetailCtrlr',['$scope','$rootScope','$log','$http','$wind
           console.log(e);
         }
       });
+            $window.location.reload();
+
     }
     
-            $route.reload();
 
     };
-  }, 2000);
+  // }, 2000);
 
 
 $scope.addStudent = function(tag){
   localStorageService.set('tag', tag);
   // localStorageService.set('id', id);
+  // $scope.uploadFile();
+  console.log('add');
 }
 
 $scope.saveDetails = function(sd, tag){

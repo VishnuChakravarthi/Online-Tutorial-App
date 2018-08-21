@@ -1,14 +1,17 @@
-<div ng-controller="StudentDetailCtrlr" ng-init="stuDetInit()">
+<div ng-controller="StudentDetailCtrlr" class="margin_top_80" ng-init="stuDetInit()">
 	<!-- class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top_75 margin_bottom_50" -->
 	<div class="col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px"></div> 
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 font_size_20 subscribe_box border_1px" id="sticky_new">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 font_size_20 subscribe_box border_1px">
 		<div ng-include="'views/navigator.html'"></div>
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="sticky_anchor"></div>
+		<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="sticky_anchor"></div> -->
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10 margin_bottom_100">
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_leftpane pad_top_10 border_1px" >
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_left pad_top_10 border_1px" >
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_white font_bold font_size_26 margin_bottom_10 text_underline">STUDENT LIST</div>
-			<div ng-repeat="name in arr" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_lobster border_rad_10 font_size_30 border_1px" ng-click="showDet(name.id)"><span class="font_size_20 font_black  fas fa-thumbtack"></span>  {{name.first_name}}&nbsp; {{name.last_name}}</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 stud_leftpane">
+				<div ng-repeat="name in arr" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 topic_disp border_rad_5 font_size_30 border_1px" data-toggle="tooltip" data-placement="right" title="{{name.first_name}}&nbsp; {{name.last_name}}" ng-click="showDet(name.id)"><span class="font_size_20 font_black  fas fa-thumbtack"></span>  {{name.first_name}}&nbsp; {{name.last_name}}</div>
+			</div>
+			
 			<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_lobster border_rad_10 font_size_30 border_1px"><span class="font_size_20 font_black  fas fa-thumbtack"></span>  David</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_lobster border_rad_10 font_size_30 border_1px"><span class="font_size_20 font_black  fas fa-thumbtack"></span>  Raja</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_lobster border_rad_10 font_size_30 border_1px"><span class="font_size_20 font_black  fas fa-thumbtack"></span>  Kris</div> -->
@@ -67,12 +70,12 @@
 							{{sd.sex}}
 						</div>
 						<div ng-if="editMode" class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
-							<select id="selectSex1">
-								<option ng-repeat="se in sex">{{se}}</option>
-								<!-- <option value="0" disabled selected>Select Sex</option>
-								<option value="1">Male</option>
-								<option value="2">Female</option>
-								<option value="3">Transgender</option> -->
+							<select id="selectSex1" ng-model= 'sd.sex' class="form-control">
+								<!-- <option value="s.value">{{s.name}}</option> -->
+								<!-- <option value="0" disabled selected>Select Sex</option> -->
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+								<option value="Others">Others</option>
 							</select>
 						</div>
 					</div>
@@ -162,8 +165,10 @@
 							  </ul>
 							</div> -->
 							    <!-- Secret Question <span class="font_red">*</span> -->
-							<select id="selectOpt">
-								<option ng-repeat="s in studentType">{{s}}</option>
+							<select id="selectOpt" ng-model="sd.stud_type" class="form-control">
+								<option value="Regular">Regular</option>
+								<option value="Short term">Short term</option>
+								<!-- <option ng-repeat="s in studentType">{{s}}</option> -->
 							</select>
 						</div>
 					</div>
@@ -174,10 +179,10 @@
 							{{sd.stud_status}}
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px" ng-if="editMode">
-							<select id="StudStatusEdit">
-								<option ng-repeat="ss in studentStatus">{{ss}}</option>
-								<!-- <option value="Activated">Activate</option>
-								<option value="Deactivate">Deactivate</option> -->
+							<select id="StudStatusEdit" ng-model="sd.stud_status" class="form-control">
+								<!-- <option ng-repeat="ss in studentStatus">{{ss}}</option> -->
+								<option value="Activate">Activate</option>
+								<option value="Deactivate">Deactivate</option>
 							</select>
 						</div>
 					</div>

@@ -2,7 +2,7 @@
 include "login_db.php";
 
 $postdata = file_get_contents("php://input");
- $request = json_decode($postdata);
+$request = json_decode($postdata);
 
 if ($request->action == 'createQuestions'){
 	$tableName = $request->tableName;

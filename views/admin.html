@@ -1,9 +1,9 @@
-<div ng-controller="AdminLoginCtrlr" class="w3-container pad_0" ng-init="">
+<div ng-controller="AdminLoginCtrlr" class="w3-container pad_0" ng-init="adminLoginInit()">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20">
 		<!-- <p>Welcome Mr. Amitabha Dey!!!</p> -->
 	</div>
 	<div class="col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px"></div>
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 font_size_20 subscribe_box border_1px" id="sticky_new">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 font_size_20 subscribe_box border_1px">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_28 text-center margin_bottom_20 border_1px">
 			Sign in to Continue!
 		</div>
@@ -15,7 +15,7 @@
 				:
 			</div>
 			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 display_cell border_1px">
-    			<input class="sub_input" type="text" ng-model="name" name="name" placeholder="Your name.." />
+    			<input class="sub_input" type="text" ng-model="email" name="name" placeholder="Your name.." />
 			</div>	
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 display_table margin_bottom_20">
@@ -30,8 +30,11 @@
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center display_cell border_1px">
-			<button class="sub_btn w3-button w3-blue" ng-click="adminSignin()">Sign in</button>
+			<button class="sub_btn w3-button w3-blue" ng-click="adminLogin()">Sign in</button>
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="sticky_anchor"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
 	</div>
 </div>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script> -->
+    <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha1.js"></script> -->

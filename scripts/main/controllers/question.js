@@ -13,7 +13,7 @@ app.controller('QuestionCtrlr',['$scope','$rootScope','$log','$http','$window','
     // ];
 
   	$scope.quesInit = function(){
-      
+      $('[data-toggle="tooltip"]').tooltip();
       // $('.modal').modal({ dismissible: false});
   		$("#slide-out").sidenav();
   		$("#selectedTest").formSelect();
@@ -129,6 +129,10 @@ $scope.showQuestiontab = function(topicname, topiccode){
             }else{
                $scope.ans = "Not Defined";
             }
+        $('#ans'+$scope.uniqueQues.QusSolution).css({
+          "background-color":"rgba(255, 0, 0, 0.71)",
+          "color" : "white"
+        });
       //         break;
       //     case 2:
       //         $scope.rat = "Medium";
@@ -142,7 +146,8 @@ $scope.showQuestiontab = function(topicname, topiccode){
       //     default:
       //         $scope.rat = "";
       // }
-      console.log($scope.rat);
+      console.log($scope.uniqueQues.QusSolution);
+      // console.log($('#ans'+$scope.uniqueQues.QusSolution).css({"background-color":"blue"}));
 
        // $('.modal').modal({ dismissible: false});
        
@@ -190,9 +195,11 @@ $scope.closeQues = function(){
 
     }
 
-$scope.updateQues = function(i, tc){
-  console.log(tc);
-  console.log($scope.uniqueQues);
+$scope.updateQues = function(Tc, qId){
+  console.log(Tc);
+  console.log(qId);
+  $scope.correctOption = [];
+  // console.log($scope.uniqueQues);
   // if($scope.uniqueQues.QusOpt2 == ""){
   //   $scope.opt2Edited = $('#optionEdit2').val();
   //   console.log('inside');
@@ -203,16 +210,22 @@ $scope.updateQues = function(i, tc){
   $scope.opt3Edited = $('#optionEdit3').val();
   $scope.opt4Edited = $('#optionEdit4').val();
   $scope.explEdited = $('#explEdit').val();
-  $scope.typeOfAns = $('#QuesType').val();
-  // $scope.difficulty = $('#selectedLevelEdit').val();
+  $scope.typeOfAns = $('#selectedLevel').val();
+  $scope.difficulty = $('#selectedLevelEdit').val();
+  $.each($("input[name='updateCheck']:checked"), function(){            
+                $scope.correctOption.push($(this).val());
+            });
+      // $scope.correctOption = $scope.create.value;
+
+      console.log($scope.correctOption);
   // }
   // $('div').('#textareaEditOpt1')
   // $scope.questEdited = $('#'+i).html();
   
   var postData = {
-        'action' : 'updateQuestions',
+        'action' : 'updateQuestion',
         'tableName' : 'questionpool',
-        'topiccode' : '',
+        'quesId' : qId,
         'question' : $scope.questEdited,
         'difficulty' : $scope.difficulty,
         'typeOfAns' : $scope.typeOfAns,
@@ -220,11 +233,49 @@ $scope.updateQues = function(i, tc){
         'option2' : $scope.opt2Edited,
         'option3' : $scope.opt3Edited,
         'option4' : $scope.opt4Edited,
-        // 'ToF' : $scope.ToF,
-        'correctOption' : $scope.correctOption,
+        'correctOption' : $scope.correctOption.toString(),
         'explanation' : $scope.explEdited
       }
   console.log(postData);
+
+  $http({
+        method  : 'POST',
+        url     : "php/adminUpdateQuestion.php",
+        data    : postData, 
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        // headers : {'Content-Type':'application/json'} 
+      }).success(function (data) {     
+        // $scope.arr = data);
+          // $scope.arr = data;
+          console.log(data);
+          if(data == 1){
+            alert("File updated successfully");
+          }else{
+            alert("File not updated");
+          }
+      }).error(function (error) {
+         console.log(error);
+      });
+  // $.ajax({
+  //       type: 'POST',
+  //       data: postData,
+  //       url: "php/adminUpdateQuestions.php",
+  //       crossDomain: true,
+  //       cache: false,
+  //       success : function(responseText){
+  //           // $('#loading').hide();
+  //         console.log(responseText);
+  //         if (responseText == 1){
+  //           alert('File uploaded successfully');
+  //         } else {
+  //           alert('File not uploaded');
+  //         }
+  //       },
+  //       error: function(e){
+  //         console.log(e);
+  //       }
+  //     });
+ $route.reload(); 
 }
 
 $scope.createQues = function(){

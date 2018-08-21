@@ -43,23 +43,6 @@ include "login_db.php";
 	
 }
 
-// if (isset($_POST['action']) && $_POST['action'] == 'updateImage'){
-// 	$tableName = $_POST['tableName'];
-// 	$id = $_POST['id'];
-// 	$file = $_POST['file'];	
-	
-//     	$sql = "UPDATE $tableName SET file = '$file' WHERE id = '$id' ";
-
-// 			if ($conn->query($sql) === TRUE) {
-// 			    // echo "New record created successfully";
-// 			    echo "1";
-// 			} else {
-// 			    echo "Error: " . $sql . "<br>" . $conn->error;
-// 			    echo "0";
-// 			}
-	
-// }
-
 $conn->close();
 
 ?>
