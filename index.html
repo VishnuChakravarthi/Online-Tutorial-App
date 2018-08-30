@@ -7,8 +7,8 @@
 	<link rel="stylesheet" href="lib/jquery-ui.css">
     <link rel="stylesheet" href="lib/w3.css">
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
-	<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css" />
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="lib/animate.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="lib/dropzone/dist/min/dropzone.min.css" />
     <!-- <link rel="stylesheet" href="lib/text-editor/minified/themes/default.min.css" /> -->
 
@@ -55,6 +55,7 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/common/config.js"></script> 
     <script src="scripts/common/controllers/navbar.js"></script>
+   <script src="scripts/common/controllers/studentNavbar.js"></script>
     <script src="scripts/common/controllers/footer.js"></script>
     <script src="scripts/main/directives/directive.js"></script>
     <script src="scripts/main/services/factory.js"></script>
@@ -65,9 +66,11 @@
     <script src="scripts/main/controllers/studentTest.js"></script>
     <script src="scripts/main/controllers/question.js"></script>
    <script src="scripts/main/controllers/adminLogin.js"></script>
+   <script src="scripts/main/controllers/weightage.js"></script>
+   <script src="scripts/main/controllers/studentPage.js"></script>
+
 </head>
-<body ng-app="myExportApp" class="bg_home_solid">   
-    <div ng-include="'views/header.html'"></div>
+<body ng-app="onlineTutorial" class="bg_home_solid">   
     <div ng-view="" autoscroll="true"></div>
     <div ng-include="'views/footer1.html'"></div>
 </body>

@@ -8,7 +8,7 @@
   color: white;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 81%, rgba(0, 0, 0, 0.5) 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 81%, rgba(0, 0, 0, 0.5) 100%);
+  background: -webkit-linear-gradient(top, rgb(35, 11, 144) 0%, #a94442 81%, #f44336 100%);
   /* Chrome10-25,Safari5.1-6 */
   background-color: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 81%, rgba(0, 0, 0, 0.5) 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -16,9 +16,9 @@
   /* IE6-9 */;
 }
 
-/*.navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav > li > a {
     color: #fff !important;
-}*/
+}
 
 #header{
   position: absolute;
@@ -34,6 +34,11 @@
     color: #fff;
     /*top: 297px;*/
     /*bottom: 0px;*/
+}
+
+.header_navbar:hover {
+  background-color: white;
+  color: black;
 }
 
 #sticky.stick {
@@ -76,6 +81,11 @@
   position: fixed;
   z-index: 1;
   box-shadow: 0px -1px 17px #2f1818;
+  height: auto;
+  background: #230b90;
+  border: none;
+  box-shadow: 0px 0px;
+  border-radius: 0px;
 }
 
 .header_strink{
@@ -83,6 +93,10 @@
   padding-bottom: 10px;
   font-size: 20px;
   box-shadow: 0px -1px 17px #2f1818;
+  background: ##230b90;
+  border: none;
+  box-shadow: 0px 0px;
+  border-radius: 0px;
 }
 
 .header_anime{
@@ -463,6 +477,74 @@ textarea.materialize-textarea:focus:not([readonly]){
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
+
+
+  .test_head{
+    font-size: 30px !important;
+    font-weight: bold;
+    color: #f9f6f6;
+    border: 2px solid #fbf9f9;
+    background: #0a0a0a;
+    border-radius: 5px;
+  }
+
+  .countValueHtml{
+    background-color: green;
+  }
+
+  .stud_home_container{
+
+  }
+
+  #test p {
+    margin-top: 25px;
+    font-size: 21px;
+    text-align: center;
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+        font-size: 21px;
+    }
+    to {
+        opacity:1;
+        font-size: 31px;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+        font-size: 21px;
+    }
+    to {
+        font-size: 31px;
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        font-size: 21px;
+        opacity:0;
+    }
+    to {
+        font-size: 31px;
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        font-size: 21px;
+        opacity:0;
+    }
+    to {
+        font-size: 31px;
+        opacity: 1;
+    }
+}
 
  /* .sidenav {
     height: 100%;
