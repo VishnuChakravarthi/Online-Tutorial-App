@@ -1,0 +1,172 @@
+<div ng-controller="TopicCtrlr" class="margin_top_80"  ng-init="topicInit()">
+	<!-- class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top_75 margin_bottom_50" -->
+	<div class="col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px"></div> 
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 font_size_20 subscribe_box border_1px">
+		<div ng-include="'views/admin/navigator.html'"></div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10 margin_bottom_100">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_left border_1px">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_white font_bold font_size_26 margin_bottom_10 text_underline">LIST OF TOPICS</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 stud_leftpane">
+				<div ng-repeat="topArr in topicArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 topic_disp border_rad_5 border_1px" data-toggle="tooltip" data-placement="right" title="{{topArr.Module_Name}}" ng-click='showTopictab("{{topArr.Module_Name}}")'><span class="font_black  fas fa-thumbtack"></span>  {{topArr.Module_Name}}</div>
+			</div>
+			<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  VECTORS</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-I</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_kaushan border_rad_5 border_1px"><span class="font_black  fas fa-thumbtack"></span>  KINAMATICS-II</div> -->
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-8 bg_009688 border_rad_5 border_1px">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bg_009688 border_rad_5 border_1px">
+				<h3 class="text-center text_underline">Topic Management Page</h3>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center margin_bottom_10 border_1px">
+					<button ng-hide="createTopicBtn" ng-click="createTopic()" class = "sub_btn border_none font_size_20">Create New Topic</button>
+				</div>
+				<div ng-hide="showTopicTab1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_30 text-center font_white"> Click a topic to view contents</div>
+
+					<h4 ng-show="viewTopic" class="text-center font_white text_underline">View or Modify Topic Contents</h4>
+					<div ng-show="viewTopic" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bg_009688 font_white border_1px">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Topic Name</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_size_20 font_white border_1px">
+							{{topicName}}
+						<!-- <label>Choose an Activity</label> -->
+					<!-- </div> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Topic Content</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_size_20 pad_0 font_white border_1px"  >
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 max_height_100p	 line_height_28 margin_bottom_10 ques_wrap">
+								When a pipe with diameter 10 cm will Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat. 
+
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+								<button data-target="modal1" ng-click="viewQues()" class="btn modal-trigger">View/Edit</button>
+									
+								<div id="modal1" class="modal">
+								    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 modal-content font_black font_size_30">
+								      <h4>View/Edit Question</h4>
+								      <p ng-hide="editContent">When a pipe with diameter 10 cm will Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat</p>
+								      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="editContent">
+								    	<textarea id="topicEdit"></textarea>
+								    </div>
+								    </div>
+
+								    <div class="modal-footer">
+								    	<a href="" ng-click="closeQues()" class="modal-close waves-effect waves-green btn-flat">Close</a>
+								    	<a href="" ng-hide="editContent" ng-click="editTopicContent()" class="waves-effect waves-green btn-flat">Edit</a>
+								    	<a href="" ng-show="editContent" ng-click="updateContent()" class="waves-effect waves-green btn-flat">Update</a>
+								      	
+								    </div>
+								</div>
+						</div>
+					</div>
+				</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Attached Documents :</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 display_table border_1px">
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_size_20">
+								<i class="fas fa-file-word"></i> Refraction Diagram.pdf
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center font_size_18">
+								View / Delete
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 display_table border_1px">
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_size_20">
+								<i class="fas fa-file-word"></i> JEEmain
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center font_size_18">
+								View / Delete
+							</div>
+						</div>
+					</div>
+					<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 border_1px">Upload Documents :</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
+							<form multiple class="dropzone" drop-zone="" id="my-dropzone1" class="font_black"></form>
+						</div>
+					</div> -->
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<!-- <button class="sub_btn" id="" ng-click="reset()">Reset</button> -->
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<button class="sub_btn" ng-click="cancelTopic()" id="">Cancel</button>
+						</div>
+						
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<button class="sub_btn" id="submit-all">Update</button>
+						</div>
+						
+					</div>
+				</div>
+				<h4 ng-show="createTopicTab" class="text-center font_white text_underline">Create New Topic</h4>
+					<div ng-show="createTopicTab" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bg_009688 font_white border_1px">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Topic Name</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white font_size_20 border_1px">
+							<!-- <div class="input-field col s12"> -->
+							<select id="selectedtpc"  class="red-text">
+								<option value="0" disabled selected>Select topic</option>
+								<option value="1">DIMENSION AND MEASUREMENT</option>
+								<option value="2">VECTORS</option>
+								<option value="3">KINAMATICS-I</option>
+								<option value="4">KINAMATICS-II</option>
+							</select>
+						<!-- <label>Choose an Activity</label> -->
+					<!-- </div> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Topic Content</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<textarea id="textarea1" class="ques_txtarea"></textarea>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Upload Documents</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px"  >
+							<select id="selectedDocType" ng-change="showUploadZone()" ng-model="up" class="red-text">
+								<option value="0" disabled selected>Select type of document</option>
+								<option value="1">Theory Notes</option>
+								<option value="2">Formulas</option>
+								<option value="3">Sample Questions</option>
+								<option value="4">Solution</option>
+								<option value="5">Tips</option>
+							</select>
+							
+						</div>
+						<div ng-show="drop" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 display_table border_1px">
+								<form multiple class="dropzone" drop-zone="" id="my-dropzone1" class="font_black"></form>
+							</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<button class="sub_btn" id="" ng-click="cancelTopic()">Cancel</button>
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<button class="sub_btn" id="" ng-click="reset()">Reset</button>
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<button class="sub_btn" id="submit-all">Create Topic</button>
+						</div>
+						
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- <div ng-controller="FooterCtrlr" class=" w3-container pad_0 footer" ng-init="">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_Courgette bg_3300ff96 font_white border_1px">
+		<h3 class="margin_5">Powered by Puriosa</h3>
+		</div>
+</div> -->
+</div>
+
+    <script src="scripts/main/services/wysiwyg.js"></script>

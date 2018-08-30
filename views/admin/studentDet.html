@@ -1,0 +1,345 @@
+<div ng-controller="StudentDetailCtrlr" class="margin_top_80" ng-init="stuDetInit()">
+	<!-- class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top_75 margin_bottom_50" -->
+	<div class="col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px"></div> 
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 font_size_20 subscribe_box border_1px">
+		<div ng-include="'views/admin/navigator.html'"></div>
+		<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="sticky_anchor"></div> -->
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10 margin_bottom_100">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_left pad_top_10 border_1px" >
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_white font_bold font_size_26 margin_bottom_10 text_underline">STUDENT LIST</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 stud_leftpane">
+				<div ng-repeat="name in arr track by $index" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 topic_disp border_rad_5 font_size_30 border_1px" data-toggle="tooltip" data-placement="right" title="{{name.first_name}}&nbsp; {{name.last_name}}" ng-click="showDet(name.id)"><span class="font_size_20 font_black  fas fa-thumbtack"></span>  {{name.first_name}}&nbsp; {{name.last_name}}</div>
+			</div>
+			
+			<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_lobster border_rad_10 font_size_30 border_1px"><span class="font_size_20 font_black  fas fa-thumbtack"></span>  David</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_lobster border_rad_10 font_size_30 border_1px"><span class="font_size_20 font_black  fas fa-thumbtack"></span>  Raja</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 font_lobster border_rad_10 font_size_30 border_1px"><span class="font_size_20 font_black  fas fa-thumbtack"></span>  Kris</div> -->
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-8 bg_ff000040 border_rad_5 border_1px">
+			<div >
+				<h3 class="text-center text_underline">Student Management Page</h3>
+				<div ng-hide="show1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_30 text-center font_white"> Click a student name to view details</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center margin_bottom_10 border_1px">
+					<button ng-hide="createStudBtn" ng-click="createStudent()" class = "sub_btn border_none font_size_20">Add New Student</button>
+				</div>
+				<div ng-show="show" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white" ng-repeat = "sd in stuDet">
+					<h4 class="text_underline">Student Details</h4>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border_1px"></div>
+						<div class="col-xs-12 col-sm-12 col-md-8 col-lg-4 border_1px" ng-if="!editMode">
+							 <!-- style="background:url({{products.file}})" -->
+							<img class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border_1px" ng-src="{{sd.photo}}" height="235px" width="100%" >
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 display_none border_1px">
+									{{sd.id}}
+							</div>
+						<div class="col-xs-12 col-sm-12 col-md-5 col-lg-3 border_1px" ng-if="editMode">
+							
+							<form multiple class="dropzone" drop-zone="" id="my-dropzone" style="height:235px"></form>
+
+							<!-- <button class="sub_btn" class=""  ng-click="upld_image({{sd.id}})">Upload Photo</button> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Name</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{sd.first_name}}
+						</div>
+						<div ng-if="editMode" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input id="first_name " type="text" class="validate" ng-model="sd.first_name">
+          					<!-- <label for="first_name" class="pad_left_15">First Name</label> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Last Name</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{sd.last_name}}
+						</div>
+						<div ng-if="editMode" class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input id="Second_name" type="text" class="validate" ng-model="sd.last_name" autocomplete='off'>
+          						<!-- <label for="Second_name" class="pad_left_15">Last Name</label> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Sex</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{sd.sex}}
+						</div>
+						<div ng-if="editMode" class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<select id="selectSex1" ng-model= 'sd.sex' class="form-control">
+								<!-- <option value="s.value">{{s.name}}</option> -->
+								<!-- <option value="0" disabled selected>Select Sex</option> -->
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+								<option value="Others">Others</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Date of Birth</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{dob | date:'dd/MM/yyyy'}}
+						</div>
+						<div ng-if="editMode" class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input type="date" name="bday" id="dobEdit" ng-model="dob">
+							<!-- <input id="start_date" type="text" class="datepicker" value={{sd.dob}}> -->
+							<!-- <label for="start_date" class="pad_left_15">Date of Birth</label> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Email Id</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{sd.email_id}}
+						</div>
+						<div ng-if="editMode" class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input id="user_id" type="text" class="validate" ng-model="sd.email_id" autocomplete='off'>
+          						<!-- <label for="user_id" class="pad_left_15">Email Id</label> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">User Id</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{sd.user_id}}
+						</div>
+						<div ng-if="editMode" class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input id="user_id" type="text" class="validate" ng-model="sd.user_id" autocomplete='off'>
+          						<!-- <label for="user_id" class="pad_left_15">User Id</label> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Course</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{sd.course}}
+						</div>
+						<div ng-if="editMode" class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input id="course" type="text" class="validate" ng-model="sd.course" autocomplete='off'>
+          						<!-- <label for="course" class="pad_left_15">Course</label> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Session Start</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{ses_start | date:'dd/MM/yyyy'}}
+						</div>
+						<div ng-if="editMode" class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input type="date" name="ses_start" id ="sesStartEdit" ng-model="ses_start">
+							<!-- <input id="start_date" type="text" class="datepicker" value={{sd.session_start}}>
+							<label for="start_date" class="pad_left_15">Start Date</label> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Session End</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{ses_end | date:'dd/MM/yyyy'}}
+						</div>
+						<div ng-if="editMode" class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input type="date" name="sesEndEdit" id="sesEndEdit" ng-model="ses_end">
+							<!-- <input id="start_date" type="text" class="datepicker" value={{sd.dob}}> -->
+							<!-- <label for="start_date" class="pad_left_15">Date of Birth</label> -->
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Student Type</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{sd.stud_type}}
+						</div>
+						<div ng-if="editMode" class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<!-- <div class="dropdown">
+							  <span class="btn btn-default text_trans_none dropdown-toggle ques_btn bg_opaque text_left pad_left_0 font_bold width_100" type="button" id="dropdownMenuQ" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							  	{{sd.stud_type}}
+							    <span class="caret"></span>
+							  </span>
+							  <ul class="dropdown-menu ques_btn text_left margin_left_15" aria-labelledby="dropdownMenuQ" >
+							    <li ng-repeat = "s in studentType"><a href="" value="{{s}}">{{s}}</a></li>
+							  </ul>
+							</div> -->
+							    <!-- Secret Question <span class="font_red">*</span> -->
+							<select id="selectOpt" ng-model="sd.stud_type" class="form-control">
+								<option value="Regular">Regular</option>
+								<option value="Short term">Short term</option>
+								<!-- <option ng-repeat="s in studentType">{{s}}</option> -->
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Student Status</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 display_cell border_1px" ng-if="!editMode">
+							{{sd.stud_status}}
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px" ng-if="editMode">
+							<select id="StudStatusEdit" ng-model="sd.stud_status" class="form-control">
+								<!-- <option ng-repeat="ss in studentStatus">{{ss}}</option> -->
+								<option value="Activate">Activate</option>
+								<option value="Deactivate">Deactivate</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border_1px"></div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center margin_bottom_10 border_1px">
+						<!-- <button ng-click="activate = !activate" class = "width_60p border_none border_rad_10 font_size_20 pad_0 font_black">
+							<div ng-if="!activate" class="button btn-info" ng-click="activateStudent({{sd.id}})">Activate</div>
+							<div ng-if="activate" class="button btn-danger" ng-click="deactivateStudent()">Deactivate</div>
+						</button> -->
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6  border_1px" ng-hide="editBtn">
+							<span class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sub_btn" ng-click="editKeyword(sd); editMode = true">Edit</span>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6  border_1px"   ng-show="editBtn">
+							<span class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sub_btn" id="submit-all" ng-click="saveDetails(sd,'save'); editMode = false">Save</span>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border_1px">
+							<span class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sub_btn" ng-click="deleteStudent(sd)">Delete</span>
+						</div>
+					</div>
+					
+				</div>
+				<div ng-show="addStud" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white">
+					<h4 class="text_underline">Enter Student Details</h4>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_20 display_table border_1px">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Photo</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<form multiple class="dropzone" drop-zone="" id="my-dropzone"></form>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Name</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input id="first_name " type="text" class="validate" ng-model="firstName" value="">
+          					<label for="firstName" class="pad_left_15">First Name</label>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Last Name</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input id="last_name" type="text" class="validate" ng-model="lastName" value="" autocomplete='off'>
+          						<label for="last_name" class="pad_left_15">Last Name</label>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Sex</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<select id="selectSex">
+								<option value="0" disabled selected>Select Sex</option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+								<option value="Transgender">Transgender</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Date of Birth</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input type="date" name="bdayAdd" id="dobAdd" ng-model="dobAdd">
+							<label for="dob2" class="pad_left_15">Date of Birth</label>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Email Id</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input id="email_id" type="text" class="validate" value="" ng-model="emailId" autocomplete='off'>
+          						<label for="email_id" class="pad_left_15">Email Id</label>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">User Id</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input id="user_id" type="text" class="validate" value="" ng-model="userId" autocomplete='off'>
+          						<label for="user_id" class="pad_left_15">User Id</label>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Course</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input id="course" type="text" class="validate" value="" ng-model="course" autocomplete='off'>
+          						<label for="course" class="pad_left_15">Course</label>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Session Start</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input type="date" name="startDateAdd" id="startDateAdd" ng-model="startDateAdd">
+							<label for="" class="pad_left_15">Start Date</label>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Session End</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="input-field col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<input type="date" name="endDateAdd" id="endSesAdd" ng-model="endSesAdd">
+							<label for="" class="pad_left_15">End Date</label>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Student Type</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<select id="selectStudType">
+								<option value="0" disabled selected>Select Type</option>
+								<option value="Regular">Regular</option>
+								<option value="Short Term">Short Term</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_10">
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 font_size_20 border_1px">Student Status</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 border_1px">:</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font_white border_1px">
+							<select id="selectStudStatus">
+								<option value="0" disabled selected>Select Status</option>
+								<option value="Activated">Activate</option>
+								<option value="Deactivate">Deactivate</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border_1px"></div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center margin_bottom_10 border_1px">
+						<div class = "width_60p cursor_pointer border_none border_rad_10 font_size_20 pad_0 font_black">
+							<div class="button btn-info" id="submit-all" ng-click="addStudent('add')">Add Student</div>
+							<!-- <div ng-if="activate" class="button btn-danger" ng-click="deactivateStudent()">Deactivate</div> -->
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- <div ng-controller="FooterCtrlr" class=" w3-container pad_0 footer" ng-init="">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_Courgette bg_3300ff96 font_white border_1px">
+		<h3 class="margin_5">Powered by Puriosa</h3>
+		</div>
+</div> -->
+</div>
+
+<script src="lib/materialize/materialize.min.js"></script>
+
+<!-- Materialize.updateTextFields(); -->
+
+<script type="text/javascript">
+// $('#selectSex1').val("1");
+// $('#selectSex1').formSelect();
+
+// $('#selectSex1').on('contentChanged', function() {
+//       $(this).formSelect();
+//     });
+//     $("#selectSex1").trigger('contentChanged');
+</script>

@@ -1,0 +1,113 @@
+<div ng-controller="TopicWeightageCtrlr" class="margin_top_80"  ng-init="weightageInit()">
+	<!-- class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top_75 margin_bottom_50" -->
+	<div class="col-sm-3 col-md-3 col-lg-3 font_size_20 border_1px"></div> 
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 font_size_20 subscribe_box border_1px">
+		<div ng-include="'views/navigator.html'"></div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_top_10 margin_bottom_100">
+		<!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 stud_left border_1px">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_white font_bold font_size_26 margin_bottom_10 text_underline">LIST OF TOPICS</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 stud_leftpane">
+				<div ng-repeat="topArr in topicArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 topic_disp border_rad_5 border_1px" data-toggle="tooltip" data-placement="right" title="{{topArr.Module_Name}}" ng-click='showTopictab("{{topArr.Module_Name}}")'><span class="font_black  fas fa-thumbtack"></span>  {{topArr.Module_Name}}</div>
+			</div>
+		</div> -->
+		<div class="col-md-3 col-lg-2">
+
+		</div>
+		<div ng-hide="mockTest" class="col-xs-12 col-sm-12 col-md-6 col-lg-8 bg_009688 border_rad_5 border_1px">
+			<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bg_009688 border_rad_5 border_1px">
+				<h3 class="text-center text_underline">Weightage Management Page</h3>
+				<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center margin_bottom_10 border_1px">
+					<button ng-hide="createTopicBtn" ng-click="createTopic()" class = "sub_btn border_none font_size_20">Create New Topic</button>
+				</div> -->
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_30 text-center font_white"> Click a test to enter weightage</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_30 text-center font_white"> 
+						<button ng-click="mock('MockTest1')" class = "sub_btn border_none font_size_20">Mock Test 1</button>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_30 text-center font_white"> 
+						<button ng-click="mock('MockTest2')" class = "sub_btn border_none font_size_20">Mock Test 2</button>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_30 text-center font_white"> 
+						<button ng-click="mock('MockTest3')" class = "sub_btn border_none font_size_20">Mock Test 3</button>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_30 text-center font_white"> 
+						<button ng-click="mock('MockTest4')" class = "sub_btn border_none font_size_20">Mock Test 4</button>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_size_30 text-center font_white"> 
+						<button ng-click="mock('MockTest5')" class = "sub_btn border_none font_size_20">Mock Test 5</button>
+					</div>
+				</div>
+			</div>
+			
+			</div>
+			<div ng-show="mockTest" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 stud_left border_1px">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_white font_bold font_size_26 margin_bottom_10 text_underline">LIST OF TOPICS</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 stud_leftpane">
+						<div ng-repeat="topArr in topicArray" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 topic_left_pane margin_bottom_5 topic_disp border_rad_5 border_1px" data-toggle="tooltip" data-placement="right" title="{{topArr.Module_Name}}" ng-click='showWeightagetab(topArr.TopicCode,topArr.Module_Name)'><span class="font_black  fas fa-thumbtack"></span>  {{topArr.Module_Name}}</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 bg_ff000040 border_rad_5">
+					<h3 class="text-center text_underline">Weightage Management Page</h3>
+					<div ng-hide="weightTab" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_white font_size_20">Select a topic to give weightage</div>
+					<div ng-show="weightTab" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font_white font_size_20 pad_20">
+						<div class="col-md-3 col-lg-2"></div>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_size_20 test_head margin_bottom_20">
+								{{test}}
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20">
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">Total Weightage :</div>
+								<div id = "countValueHtml" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 countValueHtml text-center">
+									<span ng-hide = "showWeight">{{countWeight}}</span>
+									<span ng-show = "showWeight">{{countWeig}}</span>
+								</div>
+								<!-- <div ng-show = "showWeight" id = "countValueHtml" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">{{countWeig}}</div> -->
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20">
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">Topic Name :</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">{{topicName}}</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20">
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">Easy : </div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+									<input type="text" id='easyField' ng-focus="oldValueEasy = weightVal.easy" ng-change="countDetect()" ng-model="weightVal.easy"/>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20">
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">Medium : </div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+									<input type="text" id="medField" ng-focus="oldValueMed = weightVal.medium"ng-change="countDetect()" ng-model="weightVal.medium"/>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20">
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">Hard : </div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+									<input type="text" id="hardField" ng-focus="oldValueHard = weightVal.hard" ng-change="countDetect()" ng-model="weightVal.hard"/>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin_bottom_20">
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">Master Class : </div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+									<input type="text" id="mCField" ng-focus="oldValueMaster = weightVal.masterclass" ng-change="countDetect()" ng-model="weightVal.masterclass"/>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center margin_bottom_20">
+								<button ng-click="addWeightage(topicCode)" class="btn waves-effect waves-green font_size_20 font_white btn-flat">Add Weightage</button>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- <div ng-controller="FooterCtrlr" class=" w3-container pad_0 footer" ng-init="">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center font_Courgette bg_3300ff96 font_white border_1px">
+		<h3 class="margin_5">Powered by Puriosa</h3>
+		</div>
+</div> -->
+</div>
+
+    <script src="scripts/main/services/wysiwyg.js"></script>
